@@ -6,6 +6,8 @@ Harjoitustyö on **tietovisa-sovellus**, missä käyttäjälle esitetään eri k
 
 Huomioithan, että repositorio päivittyy kevään 2024 aikana.
 
+Linkki laskarit kansioon: [Laskarit-kansio](https://github.com/mikaelri/ot-harjoitustyo/tree/main/laskarit)
+
 ## Vaatimusmäärittelyn dokumentti - Placeholder
 
 ## Placeholder
