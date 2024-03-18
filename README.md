@@ -1,26 +1,28 @@
 # Ohjelmistotekniikka, harjoitustyö
 
-Tämä on repositorio **Helsingin Yliopiston** kurssin *Ohjelmistotekniikka* harjoitustyötä ja -tehtäviä varten.
+This repository is for **Univeristy of Helsinki** course *Ohjelmistotekniikka* and its project work and exercises.
 
-Harjoitustyö on **tietovisa-sovellus**, missä käyttäjälle esitetään eri kysymyksiä eri aihealueista, kuten maantieto, kaupungit, yleistieto, urheilu tai muu. Jokaiseen kysymykseen on neljä vastausvaihtoehtoa ja yksi oikea vastas - käyttäjä yrittää vastata näihin oikein.
+Link to the laskarit folder for exercises: [Laskarit](https://github.com/mikaelri/ot-harjoitustyo/tree/main/laskarit)
 
-Huomioithan, että repositorio päivittyy kevään 2024 aikana.
+Please note that the repository will be updated during the spring of 2024.
 
-Linkki laskarit kansioon: [Laskarit-kansio](https://github.com/mikaelri/ot-harjoitustyo/tree/main/laskarit)
+## Quiz Application
 
-## Vaatimusmäärittelyn dokumentti - Placeholder
+The project is a **quiz application**, where users are presented with various questions from different topics such as geography, cities, general knowledge, sports, and others. Each question has four answer options and one correct answer.
 
-## Placeholder
+## Requirements Specification
 
-## Asennusohje - Placeholder
-Asenna projektin riippuvuudet seuraavalla komennolla
+Link to the requirements specification [Vaatimusmaarittely](https://github.com/mikaelri/ot-harjoitustyo/tree/main/documentation)
+
+## Installation instructions - TBD (placeholder)
+Install the dependencies and requirements with command
 ```
 poetry install
 ```
 
-## Käyttöohje - Placeholder
-Käynnistä ohjelma seuraavalla komennolla.
+## User Guide - TBD (placeholder)
+Start the program with command
 ```
 poetry run invoke start
 ```
-Kun ohjelma käynnistyy, seuraa sen muita ohjeita.
+When the program starts, follow its other instructions.
