@@ -12,7 +12,7 @@ The project is a **quiz application**, where users are presented with various qu
 
 ## Requirements Specification
 
-Link to the requirements specification [Vaatimusmaarittely](https://github.com/mikaelri/ot-harjoitustyo/tree/main/documentation)
+Link to the requirements specification [Vaatimusmaarittely](https://github.com/mikaelri/ot-harjoitustyo/tree/main/documentation/vaatimusmaarittely.md)
 
 ## Installation instructions - TBD (placeholder)
 Install the dependencies and requirements with command
