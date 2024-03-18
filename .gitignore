@@ -1,0 +1,8 @@
+.pytest_cache
+__pycache__
+.coverage
+htmlcov
+.vscode
+log.html
+output.xml
+report.html
