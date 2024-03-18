@@ -16,7 +16,7 @@ Link to the requirements specification [Vaatimusmaarittely](https://github.com/m
 
 ## Tracking of the working hours
 
-Link to the requirements specification [Vaatimusmaarittely](https://github.com/mikaelri/ot-harjoitustyo/tree/main/documentation/tyoaikakirjanpito.md)
+Link to the requirements specification [tyoaikakirjanpito](https://github.com/mikaelri/ot-harjoitustyo/tree/main/documentation/tyoaikakirjanpito.md)
 
 ## Installation instructions - TBD (placeholder)
 Install the dependencies and requirements with command
