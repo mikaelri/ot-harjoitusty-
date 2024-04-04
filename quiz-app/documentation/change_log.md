@@ -1,4 +1,4 @@
-## Week2
+## Week3
 - Added UI view
 - Added UserRepository class, which handles saving the new users to SQLite database
 - Added UserService class, which handles the user interface for creating a new user
