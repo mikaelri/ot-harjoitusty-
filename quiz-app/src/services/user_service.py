@@ -87,7 +87,7 @@ class UserService:
         if current_user:
             raise UsernameExistsError(f'Username {username} exists, choose a new one')
          
-        user = self._user_repository.create(User(username, password))
+        user = self._user_repository.create_user(User(username, password))
 
         if login:
             self._user = user
