@@ -12,7 +12,7 @@ Admin user could add new questions to the quiz or handle user management.
 
 ## Planned functionalities
 ### Before login
-* User can create a username
+* User can create a new user
   * Application has requirements for username and password 
   
 * User can login to the applicaiton
