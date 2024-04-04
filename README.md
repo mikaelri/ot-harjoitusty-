@@ -10,11 +10,11 @@ The project is a **quiz application**, where users are presented with various qu
 
 ## Documentation
 
-Link to the [Requirements Specification](https://github.com/mikaelri/ot-harjoitustyo/tree/main/documentation/requirements_specification.md)
+Link to the [Requirements Specification](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/requirements_specification.md)
 
-Link to the [Hour Tracker](https://github.com/mikaelri/ot-harjoitustyo/tree/main/documentation/hour_tracker.md)
+Link to the [Hour Tracker](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/hour_tracker.md)
 
-Link to the  [Change Log](https://github.com/mikaelri/ot-harjoitustyo/tree/main/documentation/change_log.md)
+Link to the  [Change Log](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/change_log.md)
 
 ## Installation instructions
 Install the dependencies and requirements with command
