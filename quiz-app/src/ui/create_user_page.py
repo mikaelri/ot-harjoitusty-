@@ -1,5 +1,7 @@
 from tkinter import ttk, StringVar, constants
-from services.user_service import user_service, UsernameExistsError
+from services.user_service import user_service
+from services.user_service import UsernameExistsError, InvalidCredentialsError, PasswordError
+
 
 class CreateUserPage:
     """Class handling the create a new user page.
@@ -30,6 +32,7 @@ class CreateUserPage:
         self._frame = None
         self._add_user = None
         self._add_password = None
+        self._add_password2 = None
         self._error_variable = None
         self._error_label = None
 
@@ -46,16 +49,22 @@ class CreateUserPage:
     def _create_user_handler(self):
         username = self._add_user.get()
         password = self._add_password.get()
+        password2 = self._add_password2.get()
 
         if len(username) == 0 or len(password) == 0:
             self._show_error("Please add username and password")
             return
         
         try:
-            user_service.create_user(username, password)
+            user_service.create_user(username, password, password2)
             self._handle_create_user()
         except UsernameExistsError:
             self._show_error(f'Username {username} exists, choose a new one')
+        
+        except InvalidCredentialsError:
+            self._show_error(f'Username must be at least 3 and password 6 characters')
+        except PasswordError:
+            self._show_error(f'Passwords must be the same')
     
     def _show_error(self, message):
         self._error_variable.set(message)
@@ -74,9 +83,15 @@ class CreateUserPage:
     def _initialize_add_password_field(self):
         password_label = ttk.Label(master=self._frame, text="Add password")
 
-        self._add_password = ttk.Entry(master=self._frame)
+        self._add_password = ttk.Entry(master=self._frame, show="*")
         password_label.grid(padx=5, pady=5, sticky=constants.N)
         self._add_password.grid(padx=5, pady=5, sticky=constants.EW)
+
+        password2_label = ttk.Label(master=self._frame, text="Add password again")
+
+        self._add_password2 = ttk.Entry(master=self._frame, show="*")
+        password2_label.grid(padx=5, pady=5, sticky=constants.N)
+        self._add_password2.grid(padx=5, pady=5, sticky=constants.EW)        
     
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)

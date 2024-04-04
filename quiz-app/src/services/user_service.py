@@ -10,6 +10,9 @@ class InvalidCredentialsError(Exception):
 class UsernameExistsError(Exception):
     pass
 
+class PasswordError(Exception):
+    pass
+
 class UserService:
     """Class taking care of the application logic for user.
     Attributes:
@@ -44,7 +47,7 @@ class UserService:
         user = self._user_repository.get_by_username(username)
 
         if not user or user.password != password:
-            raise InvalidCredentialsError("Invalid credentials")
+            raise InvalidCredentialsError
         
         self._user = user
         return user
@@ -67,7 +70,7 @@ class UserService:
         """log out the current user"""
         self._user = None
 
-    def create_user(self, username, password, login=True):
+    def create_user(self, username, password, password2, login=True):
         """create a new user
         Args:
             username:
@@ -85,7 +88,13 @@ class UserService:
         current_user = self._user_repository.get_by_username(username)
 
         if current_user:
-            raise UsernameExistsError(f'Username {username} exists, choose a new one')
+            raise UsernameExistsError
+        
+        if len(username) < 3 or len(password) < 6:
+            raise InvalidCredentialsError
+        
+        if password != password2:
+            raise PasswordError
          
         user = self._user_repository.create_user(User(username, password))
 

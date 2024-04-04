@@ -12,7 +12,7 @@ class LoginPage:
             called variable to move to create a new user page. 
     """
 
-    def __init__(self, root, handle_login, handle_create_user):
+    def __init__(self, root, handle_login, handle_create_user_page):
         """ Contructor, creating a new login view.
 
         Args:
@@ -25,7 +25,7 @@ class LoginPage:
         """
         self._root = root
         self._handle_login = handle_login
-        self._handle_create_user = handle_create_user
+        self._handle_create_user_page = handle_create_user_page
         self._frame = None
         self._add_user = None
         self._add_password = None
@@ -42,7 +42,7 @@ class LoginPage:
         """Deletes the current view."""
         self._frame.destroy()
 
-    def _handle_login(self):
+    def _login_handler(self):
         username = self._add_user.get()
         password = self._add_password.get()
 
@@ -92,16 +92,16 @@ class LoginPage:
         login_button = ttk.Button(
             master=self._frame,
             text="Login",
-            command=self._handle_login
+            command=self._login_handler
         )
 
         create_user_button = ttk.Button(
             master=self._frame,
             text="Go to Create a new user page",
-            command=self._handle_create_user
+            command=self._handle_create_user_page
         )
 
-        self._frame.grid_columnconfigure(0, weight=1, minsize=400)
+        self._frame.grid_columnconfigure(0, weight=1)
 
         login_button.grid(padx=5, pady=10, sticky=constants.EW)
         create_user_button.grid(padx=5, pady=10, sticky=constants.EW)

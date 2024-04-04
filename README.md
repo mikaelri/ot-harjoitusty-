@@ -18,15 +18,26 @@ Link to the requirements specification [Vaatimusmaarittely](https://github.com/m
 
 Link to the requirements specification [tyoaikakirjanpito](https://github.com/mikaelri/ot-harjoitustyo/tree/main/documentation/tyoaikakirjanpito.md)
 
-## Installation instructions - TBD (placeholder)
+## Installation instructions
 Install the dependencies and requirements with command
 ```
 poetry install
 ```
+## User guide and testing the application after installation
 
-## User Guide - TBD (placeholder)
-Start the program with command
+Create the database with command
+```
+poetry run invoke build
+```
+
+Start the application with command
 ```
 poetry run invoke start
 ```
-When the program starts, follow its other instructions.
+
+Run the tests with command
+```
+poetry run invoke coverage
+```
+
+
