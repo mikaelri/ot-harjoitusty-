@@ -2,7 +2,19 @@ from tkinter import ttk, StringVar, constants
 from services.user_service import user_service, UsernameExistsError
 
 class CreateUserPage:
+    """Class handling the create a new user page."""
+
     def __init__(self, root, handle_create_user, handle_show_login_page):
+        """ Contructor, creating a create a new user view.
+
+        Args:
+            root: 
+                base for Tkinter.
+            handle_create_user: 
+                called variable to move to create a new user page.
+            handle_show_login_page:
+                called variable to move to login page.   
+        """
         self._root = root
         self._handle_create_user = handle_create_user
         self._handle_show_login_page = handle_show_login_page
@@ -15,9 +27,11 @@ class CreateUserPage:
         self._initialize()
 
     def pack(self):
+        """Showing the view with Tkinter pack-method."""
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        """Deletes the current view."""
         self._frame.destroy()
 
     def _create_user_handler(self):

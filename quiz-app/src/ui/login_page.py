@@ -2,7 +2,19 @@ from tkinter import ttk, StringVar, constants
 from services.user_service import user_service, InvalidCredentialsError
 
 class LoginPage:
+    """Class handling the user login page."""
+
     def __init__(self, root, handle_login, handle_create_user):
+        """ Contructor, creating a new login view.
+
+        Args:
+            root: 
+                base for Tkinter.
+            handle_login: 
+                called variable to move to login page.
+            handle_create_user:
+                called variable to move to create a new user page.   
+        """
         self._root = root
         self._handle_login = handle_login
         self._handle_create_user = handle_create_user
@@ -15,9 +27,11 @@ class LoginPage:
         self._initialize()
     
     def pack(self):
+        """Showing the view with Tkinter pack-method."""
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        """Deletes the current view."""
         self._frame.destroy()
 
     def _handle_login(self):
