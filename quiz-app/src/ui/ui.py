@@ -2,7 +2,12 @@ from ui.login_page import LoginPage
 from ui.create_user_page import CreateUserPage
 
 class UI:
-    """Class to handle the user interface"""
+    """Class to handle the user interface.
+    
+    Attributes:
+        root: 
+            base for Tkinter
+    """
 
     def __init__(self, root):
         """Constructor for UI class
@@ -10,8 +15,6 @@ class UI:
         Args:
             root: 
                 base for Tkinter
-            _current_page: 
-                base page
         """
 
         self._root = root

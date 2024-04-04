@@ -2,7 +2,15 @@ from tkinter import ttk, StringVar, constants
 from services.user_service import user_service, InvalidCredentialsError
 
 class LoginPage:
-    """Class handling the user login page."""
+    """Class handling the user login page.
+    Attributes:
+        root: 
+            base for Tkinter.
+        handle_login: 
+            called variable to move to login page.
+        handle_create_user:
+            called variable to move to create a new user page. 
+    """
 
     def __init__(self, root, handle_login, handle_create_user):
         """ Contructor, creating a new login view.

@@ -11,7 +11,11 @@ class UsernameExistsError(Exception):
     pass
 
 class UserService:
-    """Class taking care of the application logic for user"""
+    """Class taking care of the application logic for user.
+    Attributes:
+        user_repository: 
+            by default user_repository, has the methods from UserRepository class          
+    """
 
     def __init__(self, user_repository = default_user_repository):
         """ Contructor, creating a new application logic service

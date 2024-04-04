@@ -1,5 +1,13 @@
 class User:
-    """Class for the users"""
+    """Class for the users.
+    
+    Attributes:
+        username:
+            user's username as a string variable
+        password:
+            user's password as a string variable
+    """
+
     def __init__(self, username, password):
         """Constructor for the class.
         Args:
