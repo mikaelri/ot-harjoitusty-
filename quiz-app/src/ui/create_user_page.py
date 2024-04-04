@@ -107,7 +107,7 @@ class CreateUserPage:
 
         self._frame.grid_columnconfigure(0, weight=1, minsize=400)
 
-        create_user_button.grid(padx=5, pady=5, sticky=constants.EW)
-        login_button.grid(padx=5, pady=5, sticky=constants.EW)
+        create_user_button.grid(padx=5, pady=10, sticky=constants.EW)
+        login_button.grid(padx=5, pady=10, sticky=constants.EW)
 
         self._hide_error()
