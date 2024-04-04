@@ -82,7 +82,7 @@ class UserService:
         Returns:
             The created user
         """
-        current_user = self._user_repository.find_by_username(username)
+        current_user = self._user_repository.get_by_username(username)
 
         if current_user:
             raise UsernameExistsError(f'Username {username} exists, choose a new one')

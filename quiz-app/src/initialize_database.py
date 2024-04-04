@@ -11,12 +11,12 @@ def drop_tables(connection):
 def create_table_users(connection):
     cursor = connection.cursor()
 
-    cursor.execute('''
+    cursor.execute("""
         CREATE TABLE users (
             username TEXT PRIMARY KEY,
             password TEXT
             );
-    ''')
+    """)
     
     connection.commit()
 

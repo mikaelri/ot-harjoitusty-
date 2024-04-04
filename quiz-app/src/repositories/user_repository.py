@@ -18,7 +18,7 @@ class UserRepository:
     def get_by_username(self, username):
         cursor = self._connection.cursor()
 
-        cursor.execute("SELECT * from users WHERE username= ?"), (username,)
+        cursor.execute("SELECT * from users WHERE username = ?", (username,))
         row = cursor.fetchone()
 
         return get_user_by_row(row)
@@ -29,6 +29,7 @@ class UserRepository:
             "INSERT INTO users (username, password) values (?, ?)",
             (user.username, user.password)
         )
+        self._connection.commit()
 
         return user
 

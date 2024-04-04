@@ -28,8 +28,8 @@ class CreateUserPage:
         self._handle_create_user = handle_create_user
         self._handle_show_login_page = handle_show_login_page
         self._frame = None
-        self._username_add = None
-        self._password_add = None
+        self._add_user = None
+        self._add_password = None
         self._error_variable = None
         self._error_label = None
 
@@ -97,7 +97,7 @@ class CreateUserPage:
         create_user_button = ttk.Button(
             master=self._frame,
             text="Create a new user",
-            command=self._handle_create_user
+            command=self._create_user_handler
         )
         login_button = ttk.Button(
             master=self._frame,
