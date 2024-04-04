@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "ohjelmistotekniikka"
+name = "quiz-app"
 version = "0.1.0"
 description = ""
 authors = ["mikaelri"]
@@ -7,7 +7,12 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
+invoke = "^2.2.0"
 
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
+coverage = "^7.4.4"
 
 [build-system]
 requires = ["poetry-core"]

@@ -63,14 +63,14 @@ class LoginPage:
         username_label = ttk.Label(master=self._frame, text="Username")
 
         self._add_user = ttk.Entry(master=self._frame)
-        username_label.grid(padx=10, pady=10, sticky=constants.W)
+        username_label.grid(padx=5, pady=5, sticky=constants.N)
         self._add_user.grid(padx=5, pady=5, sticky=constants.EW)
 
     def _initialize_password_field(self):
         password_label = ttk.Label(master=self._frame, text="Password")
 
         self._add_password = ttk.Entry(master=self._frame)
-        password_label.grid(padx=5, pady=5, sticky=constants.W)
+        password_label.grid(padx=5, pady=5, sticky=constants.N)
         self._add_password.grid(padx=5, pady=5, sticky=constants.EW)
     
     def _initialize(self):
@@ -97,7 +97,7 @@ class LoginPage:
 
         create_user_button = ttk.Button(
             master=self._frame,
-            text="Create a new user page",
+            text="Go to Create a new user page",
             command=self._handle_create_user
         )
 
