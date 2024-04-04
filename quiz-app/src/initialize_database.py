@@ -3,10 +3,9 @@ from database_connection import get_database_connection
 def drop_tables(connection):
     cursor = connection.cursor()
 
-    cursor.execute('''
-        DROP TABLE if exists users, questions;
-    ''')
-    
+    cursor.execute("DROP TABLE if exists users;")
+    cursor.execute("DROP TABLE if exists questions;")
+
     connection.commit()
 
 def create_table_users(connection):
@@ -23,7 +22,6 @@ def create_table_users(connection):
 
 def create_table_questions(connection):
     pass 
-
 
 def initialize_database():
     connection = get_database_connection()
