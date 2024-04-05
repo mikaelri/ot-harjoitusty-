@@ -33,9 +33,9 @@ Start the application with command
 poetry run invoke start
 ```
 
-Run the tests with command
+Run the tests and get coverage report with command
 ```
-poetry run invoke coverage
+poetry run invoke coverage-report
 ```
 
 
