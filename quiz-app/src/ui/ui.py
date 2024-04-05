@@ -1,5 +1,6 @@
 from ui.login_page import LoginPage
 from ui.create_user_page import CreateUserPage
+from ui.user_page import UserPage
 
 class UI:
     """Class to handle the user interface.
@@ -29,7 +30,7 @@ class UI:
 
         self._current_page = LoginPage(
             self._root,
-            self._show_login_page,
+            self._show_user_page,
             self._show_create_user_page
         )
         self._current_page.pack()
@@ -50,3 +51,17 @@ class UI:
         )
 
         self._current_page.pack()
+    
+    def _show_user_page(self):
+        self._hide_current_page()
+
+        self._current_page = UserPage(
+            self._root,
+            self._start_quiz_page,
+            self._show_login_page
+        )
+        self._current_page.pack()
+    
+    def _start_quiz_page(self):
+        pass
+        # this will be the new quiz TBD

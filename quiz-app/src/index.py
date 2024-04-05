@@ -5,9 +5,9 @@ def main():
     window = Tk()
     window.title("Quiz Application")
 
-    window.geometry("800x600")
-    window.minsize(800, 600)
-    window.maxsize(800, 600)
+    window.geometry("600x400")
+    window.minsize(600, 400)
+    window.maxsize(600, 400)
 
     ui_view = UI(window)
     ui_view.start()

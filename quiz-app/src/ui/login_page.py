@@ -69,7 +69,7 @@ class LoginPage:
     def _initialize_password_field(self):
         password_label = ttk.Label(master=self._frame, text="Password")
 
-        self._add_password = ttk.Entry(master=self._frame)
+        self._add_password = ttk.Entry(master=self._frame, show="*")
         password_label.grid(padx=5, pady=5, sticky=constants.N)
         self._add_password.grid(padx=5, pady=5, sticky=constants.EW)
     
