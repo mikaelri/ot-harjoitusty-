@@ -13,6 +13,9 @@ class UsernameExistsError(Exception):
 class PasswordError(Exception):
     pass
 
+class PasswordTooShortError(Exception):
+    pass
+
 class UserService:
     """Class taking care of the application logic for user.
     Attributes:
@@ -90,8 +93,11 @@ class UserService:
         if current_user:
             raise UsernameExistsError
         
-        if len(username) < 3 or len(password) < 6:
+        if len(username) < 3:
             raise InvalidCredentialsError
+        
+        if len(password) < 6:
+            raise PasswordTooShortError
         
         if password != password2:
             raise PasswordError

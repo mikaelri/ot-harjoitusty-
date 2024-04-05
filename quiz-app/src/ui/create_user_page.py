@@ -1,6 +1,11 @@
 from tkinter import ttk, StringVar, constants
 from services.user_service import user_service
-from services.user_service import UsernameExistsError, InvalidCredentialsError, PasswordError
+from services.user_service import(
+    UsernameExistsError, 
+    InvalidCredentialsError, 
+    PasswordError,
+    PasswordTooShortError
+)
 
 
 class CreateUserPage:
@@ -59,12 +64,13 @@ class CreateUserPage:
             user_service.create_user(username, password, password2)
             self._handle_create_user()
         except UsernameExistsError:
-            self._show_error(f'Username {username} exists, choose a new one')
-        
+            self._show_error("Username {username} exists, choose a new one")
         except InvalidCredentialsError:
-            self._show_error(f'Username must be at least 3 and password 6 characters')
+            self._show_error("Username must be at least 3 characters")
         except PasswordError:
-            self._show_error(f'Passwords must be the same')
+            self._show_error("Passwords must be the same")
+        except PasswordTooShortError:
+            self._show_error("Password must be at least 6 characters")
     
     def _show_error(self, message):
         self._error_variable.set(message)
