@@ -55,10 +55,6 @@ class CreateUserPage:
         username = self._add_user.get()
         password = self._add_password.get()
         password2 = self._add_password2.get()
-
-        if len(username) == 0 or len(password) == 0:
-            self._show_error("Please add username and password")
-            return
         
         try:
             user_service.create_user(username, password, password2)

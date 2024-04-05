@@ -46,7 +46,7 @@ class UI:
 
         self._current_page = CreateUserPage(
             self._root,
-            self._show_create_user_page,
+            self._show_user_page,
             self._show_login_page
         )
 
@@ -58,7 +58,7 @@ class UI:
         self._current_page = UserPage(
             self._root,
             self._start_quiz_page,
-            self._show_login_page
+            self._show_login_page,
         )
         self._current_page.pack()
     

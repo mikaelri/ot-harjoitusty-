@@ -93,10 +93,10 @@ class UserService:
         if current_user:
             raise UsernameExistsError
         
-        if len(username) < 3:
+        if len(username) < 3 or len(username) == 0:
             raise InvalidCredentialsError
         
-        if len(password) < 6:
+        if len(password) < 6 or len(password) == 0:
             raise PasswordTooShortError
         
         if password != password2:
