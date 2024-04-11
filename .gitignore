@@ -7,6 +7,9 @@ log.html
 output.xml
 report.html
 
+#Used for weekly tasks tracker, same as the exercises
+weekly_tasks.md
+
 #Database files
 quiz-app/data
 data/quiz-app.sqlite

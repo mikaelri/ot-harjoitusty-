@@ -30,6 +30,7 @@ def create_table_questions(connection):
 
     cursor.execute("""
         CREATE TABLE questions (
+            questions TEXT PRIMARY KEY
             );
     """)
 
