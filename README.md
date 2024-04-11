@@ -17,23 +17,23 @@ Link to the [Hour Tracker](https://github.com/mikaelri/ot-harjoitustyo/blob/main
 Link to the  [Change Log](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/change_log.md)
 
 ## Installation instructions
-Install the dependencies and requirements with command
+Install the dependencies inside the *quiz-app* folder and requirements with command
 ```
 poetry install
 ```
 ## User guide and testing the application after installation
 
-Create the database with command
+Create the database with command inside *the quiz-app folder*
 ```
 poetry run invoke build
 ```
 
-Start the application with command
+Start the application with command inside *the quiz-app folder*
 ```
 poetry run invoke start
 ```
 
-Run the tests and get coverage report with command
+Run the tests and get coverage report with command inside *the quiz-app folder*
 ```
 poetry run invoke coverage-report
 ```
