@@ -2,9 +2,10 @@ from ui.login_page import LoginPage
 from ui.create_user_page import CreateUserPage
 from ui.user_page import UserPage
 
+
 class UI:
     """Class to handle the user interface.
-    
+
     Attributes:
         root: 
             base for Tkinter
@@ -38,7 +39,7 @@ class UI:
     def _hide_current_page(self):
         if self._current_page:
             self._current_page.destroy()
-        
+
         self._current_page = None
 
     def _show_create_user_page(self):
@@ -51,7 +52,7 @@ class UI:
         )
 
         self._current_page.pack()
-    
+
     def _show_user_page(self):
         self._hide_current_page()
 
@@ -61,7 +62,7 @@ class UI:
             self._show_login_page,
         )
         self._current_page.pack()
-    
+
     def _start_quiz_page(self):
         pass
         # this will be the new quiz TBD

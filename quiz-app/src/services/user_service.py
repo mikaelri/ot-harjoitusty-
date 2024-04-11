@@ -2,19 +2,24 @@ from entities.user import User
 
 from repositories.user_repository import (
     user_repository as default_user_repository
-    )
+)
+
 
 class InvalidCredentialsError(Exception):
     pass
 
+
 class UsernameExistsError(Exception):
     pass
+
 
 class PasswordError(Exception):
     pass
 
+
 class PasswordTooShortError(Exception):
     pass
+
 
 class UserService:
     """Class taking care of the application logic for user.
@@ -23,7 +28,7 @@ class UserService:
             by default user_repository, has the methods from UserRepository class          
     """
 
-    def __init__(self, user_repository = default_user_repository):
+    def __init__(self, user_repository=default_user_repository):
         """ Contructor, creating a new application logic service
 
         Args:
@@ -31,7 +36,7 @@ class UserService:
                 by default user_repository, has the methods from UserRepository class  
         """
         self._user = None
-        self._user_repository = user_repository       
+        self._user_repository = user_repository
 
     def login(self, username, password):
         """handles the login for user.
@@ -51,7 +56,7 @@ class UserService:
 
         if not user or user.password != password:
             raise InvalidCredentialsError
-        
+
         self._user = user
         return user
 
@@ -61,14 +66,14 @@ class UserService:
             Current logged in user
         """
         return self._user
-    
+
     def get_users(self):
         """gets all users
         Returns:
             A list of all users
         """
         return self._user_repository.get_all()
-    
+
     def logout(self):
         """log out the current user"""
         self._user = None
@@ -92,21 +97,22 @@ class UserService:
 
         if current_user:
             raise UsernameExistsError
-        
+
         if len(username) < 3 or len(username) == 0:
             raise InvalidCredentialsError
-        
+
         if len(password) < 6 or len(password) == 0:
             raise PasswordTooShortError
-        
+
         if password != password2:
             raise PasswordError
-         
+
         user = self._user_repository.create_user(User(username, password))
 
         if login:
             self._user = user
-              
+
         return user
+
 
 user_service = UserService()

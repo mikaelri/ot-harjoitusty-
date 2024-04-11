@@ -1,6 +1,7 @@
 from tkinter import ttk, constants
 from services.user_service import user_service
 
+
 class UserPage:
     def __init__(self, root, handle_start_quiz, handle_logout):
 
@@ -11,7 +12,7 @@ class UserPage:
         self._user = user_service.get_current_user()
 
         self._initialize()
-    
+
     def pack(self):
         """Showing the view with Tkinter pack-method."""
         self._frame.pack(fill=constants.X)
@@ -29,19 +30,21 @@ class UserPage:
         self._handle_logout()
 
     def _initialize_header(self):
-        user_label = ttk.Label(master=self._frame, text=f'Logged in as {self._user.username}')
+        user_label = ttk.Label(
+            master=self._frame, text=f'Logged in as {self._user.username}')
         user_label.grid(row=0, column=0, padx=5, pady=10, sticky=constants.N)
 
     def _initialize_new_quiz(self):
         start_quiz_button = ttk.Button(
-            master=self._frame, 
-            text="Start a new quiz", 
+            master=self._frame,
+            text="Start a new quiz",
             command=self._handle_start_quiz
-            )
+        )
         start_quiz_button.grid(row=1, padx=5, pady=10, sticky=constants.EW)
 
     def _initialize_logout(self):
-        logout_button = ttk.Button(master=self._frame, text="Logout", command=self._logout_handler)
+        logout_button = ttk.Button(
+            master=self._frame, text="Logout", command=self._logout_handler)
         logout_button.grid(padx=5, pady=10, sticky=constants.EW)
 
     def _initialize_footer(self):

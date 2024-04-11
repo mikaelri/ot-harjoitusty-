@@ -1,6 +1,6 @@
 class User:
     """Class for the users.
-    
+
     Attributes:
         username:
             user's username as a string variable

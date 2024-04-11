@@ -1,6 +1,7 @@
 from tkinter import ttk, StringVar, constants
 from services.user_service import user_service, InvalidCredentialsError
 
+
 class LoginPage:
     """Class handling the user login page.
     Attributes:
@@ -33,7 +34,7 @@ class LoginPage:
         self._error_label = None
 
         self._initialize()
-    
+
     def pack(self):
         """Showing the view with Tkinter pack-method."""
         self._frame.pack(fill=constants.X)
@@ -72,7 +73,7 @@ class LoginPage:
         self._add_password = ttk.Entry(master=self._frame, show="*")
         password_label.grid(padx=5, pady=5, sticky=constants.N)
         self._add_password.grid(padx=5, pady=5, sticky=constants.EW)
-    
+
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
 

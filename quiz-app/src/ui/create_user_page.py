@@ -1,8 +1,8 @@
 from tkinter import ttk, StringVar, constants
 from services.user_service import user_service
-from services.user_service import(
-    UsernameExistsError, 
-    InvalidCredentialsError, 
+from services.user_service import (
+    UsernameExistsError,
+    InvalidCredentialsError,
     PasswordError,
     PasswordTooShortError
 )
@@ -10,7 +10,7 @@ from services.user_service import(
 
 class CreateUserPage:
     """Class handling the create a new user page.
-    
+
     Attributes:
         root: 
             base for Tkinter.
@@ -55,7 +55,7 @@ class CreateUserPage:
         username = self._add_user.get()
         password = self._add_password.get()
         password2 = self._add_password2.get()
-        
+
         try:
             user_service.create_user(username, password, password2)
             self._handle_create_user()
@@ -67,7 +67,7 @@ class CreateUserPage:
             self._show_error("Passwords must be the same")
         except PasswordTooShortError:
             self._show_error("Password must be at least 6 characters")
-    
+
     def _show_error(self, message):
         self._error_variable.set(message)
         self._error_label.grid()
@@ -89,12 +89,13 @@ class CreateUserPage:
         password_label.grid(padx=5, pady=5, sticky=constants.N)
         self._add_password.grid(padx=5, pady=5, sticky=constants.EW)
 
-        password2_label = ttk.Label(master=self._frame, text="Add password again")
+        password2_label = ttk.Label(
+            master=self._frame, text="Add password again")
 
         self._add_password2 = ttk.Entry(master=self._frame, show="*")
         password2_label.grid(padx=5, pady=5, sticky=constants.N)
-        self._add_password2.grid(padx=5, pady=5, sticky=constants.EW)        
-    
+        self._add_password2.grid(padx=5, pady=5, sticky=constants.EW)
+
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
 
