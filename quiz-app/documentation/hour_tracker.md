@@ -6,4 +6,5 @@
 | 4.4               | 7      | Add UI view, create a new user function and database connection |
 | 5.4               | 8      | Tested UserService and UserRepository classes, made some fixes to the ui |
 | 11.4              | 0,5    | Added pylint and pep8 formatting |
-| **Total hours**   | **17,5**
+| 12.4              | 2,5    | Created architecture diagrams and started planning for database schemas for questions table |
+| **Total hours**   | **20**
