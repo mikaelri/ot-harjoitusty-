@@ -27,3 +27,7 @@ def format(ctx):
 @task
 def lint(ctx):
     ctx.run("pylint src", pty=True)
+
+@task(build)
+def create(ctx):
+    ctx.run("python3 src/initialize_questions.py", pty=True)

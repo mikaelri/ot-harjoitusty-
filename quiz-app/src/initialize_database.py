@@ -15,8 +15,8 @@ def create_table_users(connection):
 
     cursor.execute("""
         CREATE TABLE users (
-            username TEXT PRIMARY KEY,
-            password TEXT
+            username TEXT PRIMARY KEY NOT NULL,
+            password TEXT NOT NULL
             );
     """)
 
@@ -24,13 +24,18 @@ def create_table_users(connection):
 
 
 def create_table_questions(connection):
-    # this will be updated later on when the questions table is to be constructed
-    # table is left blank as of now
+
     cursor = connection.cursor()
 
     cursor.execute("""
         CREATE TABLE questions (
-            questions TEXT PRIMARY KEY
+            question_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            question TEXT NOT NULL,
+            option_1 TEXT NOT NULL,
+            option_2 TEXT NOT NULL,
+            option_3 TEXT NOT NULL,
+            option_4 TEXT NOT NULL,
+            correct_option INTEGER NOT NULL CHECK (correct_option BETWEEN 1 AND 4)
             );
     """)
 
@@ -39,7 +44,6 @@ def create_table_questions(connection):
 
 def initialize_database():
     connection = get_database_connection()
-
     drop_tables(connection)
     create_table_users(connection)
     create_table_questions(connection)

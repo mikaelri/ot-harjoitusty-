@@ -8,7 +8,7 @@ class User:
             user's password as a string variable
     """
 
-    def __init__(self, username, password):
+    def __init__(self, username: str, password: str):
         """Constructor for the class.
         Args:
             username:
