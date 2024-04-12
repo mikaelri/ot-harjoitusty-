@@ -8,5 +8,5 @@
   
 ## Week4
 - Added questions tables and created database connection
-- Added QuestionsRepository class, which handles saving the new questions to SQLite database
+- Added QuizRepository class, which handles saving the new questions to SQLite database
   
