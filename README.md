@@ -25,9 +25,9 @@ poetry install
 ```
 ## User guide and testing the application after installation
 
-Create the database inside *the quiz-app folder* with command
+Create the database and initialize the questions for the quiz inside the *quiz-app folder* with command
 ```
-poetry run invoke build
+poetry run invoke create
 ```
 
 Start the application inside *the quiz-app folder* with command
@@ -39,5 +39,3 @@ Run the tests and get coverage report inside *the quiz-app folder* with command
 ```
 poetry run invoke coverage-report
 ```
-
-
