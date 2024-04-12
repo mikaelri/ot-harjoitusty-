@@ -16,7 +16,7 @@ Link to the [Hour Tracker](https://github.com/mikaelri/ot-harjoitustyo/blob/main
 
 Link to the  [Change Log](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/change_log.md)
 
-Link to the  [Architechture](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/architecture.md)
+Link to the  [Architecture](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/architecture.md)
 
 ## Installation instructions
 Install the dependencies and requirements inside the *quiz-app* folder with command

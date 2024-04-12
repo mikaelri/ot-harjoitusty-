@@ -10,6 +10,6 @@ Services uses classes from repositories layer (UserRepository, QuestionRepositor
 Repositories uses entities classes in data processing.
 
 Entities are the data models, representing the data structure in the application.<br>
-Entities class User can have multiple questions as well as the Questions class can have multiple users.
+Entities class User can have multiple questions as well as the Question class can have multiple users.
 
 ![Packaging structure](./pictures/packagingdiagram.png)
