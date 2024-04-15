@@ -15,11 +15,22 @@ def initialize_questions():
     questions = [
         Quiz(None, "What is the largest planet in the Solar system",
              ["Mars", "Pluto", "Jupiter", "Venus"], 3),
-        Quiz(None, "What is the capital of Finland", [
-             "Helsinki", "Stockholm", "Oslo", "Turku"], 1),
 
+        Quiz(None, "What is the capital of Australia", [
+             "Perth", "Sidney", "Canberra", "Melbourne"], 3),
+
+        Quiz(None, "Who won the icehockey World cup in 1995?", [
+             "USA", "Sweden", "Finland", "Canada"], 3),
+
+        Quiz(None, "In what year Finland participated in football World cup?", [
+             "1992", "2002", "2022", "2021"], 4),
+
+        Quiz(None, "In what year Finland won the Eurovision song contest?", [
+             "1996", "1998", "2012", "2006"], 4),
+
+        Quiz(None, "What is the largest lake in Finland?", [
+             "Päijänne", "Saimaa", "Oulujärvi", "Inarijärvi"], 2),
     ]
-    # To be updated with more questions
 
     for quiz in questions:
         quiz_repository.create_question(quiz)
