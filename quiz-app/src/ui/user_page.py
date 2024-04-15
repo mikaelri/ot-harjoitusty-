@@ -21,38 +21,61 @@ class UserPage:
         """Deletes the current view."""
         self._frame.destroy()
 
-    def _quiz_handler(self):
-        pass
-        # this will be function to start the quiz TBD
-
     def _logout_handler(self):
         user_service.logout()
         self._handle_logout()
 
     def _initialize_header(self):
         user_label = ttk.Label(
-            master=self._frame, text=f'Logged in as {self._user.username}')
+            master=self._frame,
+            text=f'Logged in as {self._user.username}')
         user_label.grid(row=0, column=0, padx=5, pady=10, sticky=constants.N)
+
+    def _initialize_info(self):
+        info_text = '''
+        You will be shown questions with four possible answer options.
+        Your task is to try to select the correct answer.
+        When you have selected your answer, press submit and continue.
+
+        To start a new quiz, press below - good luck!'''
+        quiz_info = ttk.Label(
+            master=self._frame,
+            text=info_text)
+        quiz_info.grid(row=1, column=0, padx=5, pady=10, sticky=constants.N,)
 
     def _initialize_new_quiz(self):
         start_quiz_button = ttk.Button(
             master=self._frame,
-            text="Start a new quiz",
+            style='startquiz.TButton',
+            text='Start a new quiz',
             command=self._handle_start_quiz
         )
-        start_quiz_button.grid(row=1, padx=5, pady=10, sticky=constants.EW)
+
+        style = ttk.Style(self._frame)
+        style.configure('startquiz.TButton',
+                        foreground='white', background='green', width=30)
+        start_quiz_button.grid(row=2, padx=5, pady=10)
 
     def _initialize_logout(self):
-        logout_button = ttk.Button(
-            master=self._frame, text="Logout", command=self._logout_handler)
-        logout_button.grid(padx=5, pady=10, sticky=constants.EW)
+        logout_text = 'Not in a mood for a quiz? Logout from top right corner'
+        logout_info = ttk.Label(master=self._frame, text=logout_text)
+        logout_info.grid(row=3, column=0, padx=5, pady=10, sticky=constants.N)
 
-    def _initialize_footer(self):
-        pass
+        style = ttk.Style(self._frame)
+        style.configure('logout.TButton', foreground='white', background='red')
+
+        logout_button = ttk.Button(
+            master=self._frame,
+            text="Logout",
+            style='logout.TButton',
+            command=self._logout_handler
+        )
+        logout_button.grid(row=0, padx=5, pady=10, sticky=constants.E)
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
-        self._initialize_new_quiz()
         self._initialize_header()
+        self._initialize_info()
+        self._initialize_new_quiz()
         self._initialize_logout()
         self._frame.grid_columnconfigure(0, weight=1)

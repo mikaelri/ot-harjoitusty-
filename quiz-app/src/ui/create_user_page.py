@@ -78,23 +78,23 @@ class CreateUserPage:
     def _initialize_add_username_field(self):
         username_label = ttk.Label(master=self._frame, text="Add username")
 
-        self._add_user = ttk.Entry(master=self._frame)
+        self._add_user = ttk.Entry(master=self._frame, width=50)
         username_label.grid(padx=5, pady=5, sticky=constants.N)
-        self._add_user.grid(padx=5, pady=5, sticky=constants.EW)
+        self._add_user.grid(padx=5, pady=5)
 
     def _initialize_add_password_field(self):
         password_label = ttk.Label(master=self._frame, text="Add password")
 
-        self._add_password = ttk.Entry(master=self._frame, show="*")
+        self._add_password = ttk.Entry(master=self._frame, show="*", width=50)
         password_label.grid(padx=5, pady=5, sticky=constants.N)
-        self._add_password.grid(padx=5, pady=5, sticky=constants.EW)
+        self._add_password.grid(padx=5, pady=5)
 
         password2_label = ttk.Label(
             master=self._frame, text="Add password again")
 
-        self._add_password2 = ttk.Entry(master=self._frame, show="*")
+        self._add_password2 = ttk.Entry(master=self._frame, show="*", width=50)
         password2_label.grid(padx=5, pady=5, sticky=constants.N)
-        self._add_password2.grid(padx=5, pady=5, sticky=constants.EW)
+        self._add_password2.grid(padx=5, pady=5)
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
@@ -114,18 +114,20 @@ class CreateUserPage:
 
         create_user_button = ttk.Button(
             master=self._frame,
+            width=50,
             text="Create a new user",
             command=self._create_user_handler
         )
         login_button = ttk.Button(
             master=self._frame,
+            width=50,
             text="Go to Login page",
             command=self._handle_show_login_page
         )
 
         self._frame.grid_columnconfigure(0, weight=1, minsize=400)
 
-        create_user_button.grid(padx=5, pady=10, sticky=constants.EW)
-        login_button.grid(padx=5, pady=10, sticky=constants.EW)
+        create_user_button.grid(padx=5, pady=10)
+        login_button.grid(padx=5, pady=10)
 
         self._hide_error()

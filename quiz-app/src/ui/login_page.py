@@ -62,17 +62,17 @@ class LoginPage:
 
     def _initialize_username_field(self):
         username_label = ttk.Label(master=self._frame, text="Username")
+        username_label.grid(row=2, padx=5, pady=5, sticky=constants.N)
 
-        self._add_user = ttk.Entry(master=self._frame)
-        username_label.grid(padx=5, pady=5, sticky=constants.N)
-        self._add_user.grid(padx=5, pady=5, sticky=constants.EW)
+        self._add_user = ttk.Entry(master=self._frame, width=50)
+        self._add_user.grid(padx=5, pady=5)
 
     def _initialize_password_field(self):
         password_label = ttk.Label(master=self._frame, text="Password")
 
-        self._add_password = ttk.Entry(master=self._frame, show="*")
+        self._add_password = ttk.Entry(master=self._frame, show="*", width=50)
         password_label.grid(padx=5, pady=5, sticky=constants.N)
-        self._add_password.grid(padx=5, pady=5, sticky=constants.EW)
+        self._add_password.grid(padx=5, pady=5)
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
@@ -92,19 +92,21 @@ class LoginPage:
 
         login_button = ttk.Button(
             master=self._frame,
+            width=50,
             text="Login",
             command=self._login_handler
         )
 
         create_user_button = ttk.Button(
             master=self._frame,
+            width=50,
             text="Go to Create a new user page",
             command=self._handle_create_user_page
         )
 
         self._frame.grid_columnconfigure(0, weight=1)
 
-        login_button.grid(padx=5, pady=10, sticky=constants.EW)
-        create_user_button.grid(padx=5, pady=10, sticky=constants.EW)
+        login_button.grid(padx=5, pady=10)
+        create_user_button.grid(padx=5, pady=10)
 
         self._hide_error()

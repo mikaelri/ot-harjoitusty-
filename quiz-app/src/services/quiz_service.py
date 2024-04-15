@@ -9,6 +9,9 @@ class QuestionService:
     def __init__(self, quiz_repository=default_quiz_repository):
         self._quiz_repository = quiz_repository
 
-    def check_answer(self, quiz: Quiz, user_choice: str) -> bool:
-        correct_answer = quiz.options[quiz.correct_option - 1].lower()
-        return correct_answer == user_choice.lower()
+    def check_answer(self, quiz: Quiz, user_choice: int) -> bool:
+        correct_answer = quiz.correct_option
+        return correct_answer == user_choice
+
+
+quiz_service = QuestionService()
