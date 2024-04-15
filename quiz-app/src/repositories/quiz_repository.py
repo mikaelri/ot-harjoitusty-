@@ -1,4 +1,14 @@
 from database_connection import get_database_connection
+from entities.quiz import Quiz
+
+
+def get_question_by_row(row):
+    return Quiz(
+        row['question_id'],
+        row['question'],
+        [row['option_1'], row['option_2'], row['option_3'], row['option_4']],
+        row['correct_option']
+    ) if row else None
 
 
 class QuizRepository:
@@ -16,7 +26,12 @@ class QuizRepository:
         )
         self._connection.commit()
 
-        return cursor.lastrowid
+    def get_all(self) -> list:
+        cursor = self._connection.cursor()
+        cursor.execute("SELECT * FROM questions")
+        rows = cursor.fetchall()
+
+        return list(map(get_question_by_row, rows))
 
 
 quiz_repository = QuizRepository(get_database_connection())

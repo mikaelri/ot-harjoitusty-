@@ -13,16 +13,16 @@ def initialize_questions():
     connection.commit()
 
     questions = [
-        Quiz(None, "What is the largest planet in the Solar system",
+        Quiz(None, "What is the largest planet in the Solar system?",
              ["Mars", "Pluto", "Jupiter", "Venus"], 3),
 
-        Quiz(None, "What is the capital of Australia", [
+        Quiz(None, "What is the capital of Australia?", [
              "Perth", "Sidney", "Canberra", "Melbourne"], 3),
 
         Quiz(None, "Who won the icehockey World cup in 1995?", [
              "USA", "Sweden", "Finland", "Canada"], 3),
 
-        Quiz(None, "In what year Finland participated in football World cup?", [
+        Quiz(None, "In what year Finland participated in the football European cup?", [
              "1992", "2002", "2022", "2021"], 4),
 
         Quiz(None, "In what year Finland won the Eurovision song contest?", [

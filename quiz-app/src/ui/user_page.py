@@ -35,13 +35,13 @@ class UserPage:
         info_text = '''
         You will be shown questions with four possible answer options.
         Your task is to try to select the correct answer.
-        When you have selected your answer, press submit and continue.
 
         To start a new quiz, press below - good luck!'''
         quiz_info = ttk.Label(
             master=self._frame,
-            text=info_text)
-        quiz_info.grid(row=1, column=0, padx=5, pady=10, sticky=constants.N,)
+            text=info_text
+        )
+        quiz_info.grid(row=1, column=0, padx=5, pady=10, sticky=constants.N)
 
     def _initialize_new_quiz(self):
         start_quiz_button = ttk.Button(
@@ -57,10 +57,6 @@ class UserPage:
         start_quiz_button.grid(row=2, padx=5, pady=10)
 
     def _initialize_logout(self):
-        logout_text = 'Not in a mood for a quiz? Logout from top right corner'
-        logout_info = ttk.Label(master=self._frame, text=logout_text)
-        logout_info.grid(row=3, column=0, padx=5, pady=10, sticky=constants.N)
-
         style = ttk.Style(self._frame)
         style.configure('logout.TButton', foreground='white', background='red')
 

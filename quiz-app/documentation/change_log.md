@@ -9,4 +9,5 @@
 ## Week4
 - Added questions tables and created database connection
 - Added QuizRepository class, which handles saving the new questions to SQLite database
+- User has a view to see all of the multiple choice questions and options (to be update to show them question by question)
   
