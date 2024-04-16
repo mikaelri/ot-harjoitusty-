@@ -1,6 +1,5 @@
 import unittest
 from entities.quiz import Quiz
-from repositories.quiz_repository import quiz_repository
 from services.quiz_service import QuestionService
 
 

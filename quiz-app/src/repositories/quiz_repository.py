@@ -2,7 +2,7 @@ from database_connection import get_database_connection
 from entities.quiz import Quiz
 
 
-def get_question_by_row(row):
+def get_question_by_row(row) -> object:
     return Quiz(
         row['question_id'],
         row['question'],
@@ -15,7 +15,7 @@ class QuizRepository:
     def __init__(self, connection):
         self._connection = connection
 
-    def create_question(self, quiz):
+    def create_question(self, quiz) -> object:
         cursor = self._connection.cursor()
         cursor.execute(
             """INSERT INTO questions 
@@ -26,12 +26,19 @@ class QuizRepository:
         )
         self._connection.commit()
 
+        return quiz
+
     def get_all(self) -> list:
         cursor = self._connection.cursor()
         cursor.execute("SELECT * FROM questions")
         rows = cursor.fetchall()
 
         return list(map(get_question_by_row, rows))
+
+    def delete_all(self) -> None:
+        cursor = self._connection.cursor()
+        cursor.execute("DELETE FROM questions")
+        self._connection.commit()
 
 
 quiz_repository = QuizRepository(get_database_connection())
