@@ -10,9 +10,6 @@ class TestQuizRepository(unittest.TestCase):
             "Stockholm", "Helsinki", "Oslo", "Copenhagen"
         ], 2)
 
-    def tearDown(self) -> None:
-        quiz_repository.delete_all()
-    
     def test_create_new_question_creates_correct_question(self):
         question = quiz_repository.create_question(self.question)
         all_questions = quiz_repository.get_all()
@@ -21,4 +18,5 @@ class TestQuizRepository(unittest.TestCase):
         self.assertEqual(all_questions[0].question_id, question.question_id)
         self.assertEqual(all_questions[0].question, question.question)
         self.assertEqual(all_questions[0].options, question.options)
-        self.assertEqual(all_questions[0].correct_option, question.correct_option)
+        self.assertEqual(
+            all_questions[0].correct_option, question.correct_option)
