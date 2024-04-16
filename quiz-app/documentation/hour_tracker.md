@@ -8,4 +8,5 @@
 | 11.4              | 0,5    | Added pylint and pep8 formatting |
 | 12.4              | 3,5    | Created architecture diagrams and database schema and few questions for questions table |
 | 15.4              | 5    | Updated questions, added a basis of quiz view and started quiz features, updated ui |
-| **Total hours**   | **26**
+| 16.4              | 6    | Fixed test database connection, added tests for initializing the questions and tested QuestionService and QuestionRepository classes |
+| **Total hours**   | **32**

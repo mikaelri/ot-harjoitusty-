@@ -1,5 +1,5 @@
 from tkinter import ttk, constants
-from services.quiz_service import quiz_service
+from services.question_service import question_service
 from services.user_service import user_service
 
 
@@ -25,7 +25,7 @@ class QuizPage:
         self._frame.destroy()
 
     def _show_quiz_questions(self):
-        self.questions = quiz_service.show_questions()
+        self.questions = question_service.show_questions()
         self._current_question_index = 0
         self.current_question = self.questions[self._current_question_index]
         question_index = 1

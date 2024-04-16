@@ -1,16 +1,16 @@
 from sqlite3 import DatabaseError
 from database_connection import get_database_connection
-from repositories.quiz_repository import QuizRepository
+from repositories.question_repository import QuestionRepository
 from entities.quiz import Quiz
 
 
-def initialize_questions(connection=None, quiz_repository=None) -> object:
+def initialize_questions(connection=None, question_repository=None) -> object:
 
     if connection is None:
         connection = get_database_connection()
 
-    if quiz_repository is None:
-        quiz_repository = QuizRepository(connection)
+    if question_repository is None:
+        question_repository = QuestionRepository(connection)
 
     try:
         cursor = connection.cursor()
@@ -38,7 +38,7 @@ def initialize_questions(connection=None, quiz_repository=None) -> object:
         ]
 
         for quiz in questions:
-            quiz_repository.create_question(quiz)
+            question_repository.create_question(quiz)
         print('Questions initialized for the quiz')
 
     except DatabaseError as error:

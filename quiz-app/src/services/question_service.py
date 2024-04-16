@@ -2,21 +2,21 @@ import random
 from entities.quiz import Quiz
 
 
-from repositories.quiz_repository import (
-    quiz_repository as default_quiz_repository
+from repositories.question_repository import (
+    question_repository as default_question_repository
 )
 
 
 class QuestionService:
-    def __init__(self, quiz_repository=default_quiz_repository):
-        self._quiz_repository = quiz_repository
+    def __init__(self, question_repository=default_question_repository):
+        self._question_repository = question_repository
 
     # def check_answer(self, quiz: Quiz, user_choice: int) -> bool:
     #     correct_answer = quiz.correct_option
     #     return correct_answer == user_choice
 
     def show_questions(self) -> list:
-        questions = self._quiz_repository.get_all()
+        questions = self._question_repository.get_all()
 
         random.shuffle(questions)
 
@@ -25,7 +25,7 @@ class QuestionService:
     def create_question(self, question_id, question, options, correct_option) -> object:
         new_question = Quiz(question_id, question, options, correct_option)
 
-        return self._quiz_repository.create_question(new_question)
+        return self._question_repository.create_question(new_question)
 
 
-quiz_service = QuestionService()
+question_service = QuestionService()

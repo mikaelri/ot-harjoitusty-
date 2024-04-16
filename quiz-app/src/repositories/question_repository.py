@@ -11,7 +11,7 @@ def get_question_by_row(row) -> object:
     ) if row else None
 
 
-class QuizRepository:
+class QuestionRepository:
     def __init__(self, connection):
         self._connection = connection
 
@@ -41,4 +41,4 @@ class QuizRepository:
         self._connection.commit()
 
 
-quiz_repository = QuizRepository(get_database_connection())
+question_repository = QuestionRepository(get_database_connection())
