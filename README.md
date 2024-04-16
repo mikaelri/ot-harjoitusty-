@@ -35,7 +35,11 @@ Start the application inside *the quiz-app folder* with command
 poetry run invoke start
 ```
 
-Run the tests and get coverage report inside *the quiz-app folder* with command
+Activate the virtual environment before running the tests with command
+```
+poetry shell
+```
+Run the tests when virtual environment is on and get coverage report inside *the quiz-app folder* with command
 ```
 poetry run invoke coverage-report
 ```
