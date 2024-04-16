@@ -9,6 +9,6 @@
 ## Week4
 - Added questions table, created initialized questions for the new table and tested the initialization of questions in database
 - Added and tested QuestionRepository class, which handles saving the new questions to SQLite database
-- Added and tested features for QuestionService class, which handles the user interface for the quiz app ((created features as of now, might be necessary to add some more functions) )
-- User has a view to see all of the multiple choice questions and options (to be update to show them question by question)
+- Added and tested features for QuestionService class, which handles the user interface for the quiz app (created features as of now, might be necessary to add some more functions later, which will be also tested accordingly)
+- User has a view to see all of the multiple choice questions and options (to be updated to show them question by question)
   
