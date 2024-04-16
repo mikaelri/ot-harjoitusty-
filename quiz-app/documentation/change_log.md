@@ -7,7 +7,7 @@
 - User can logout
   
 ## Week4
-- Added questions tables and created database connection
+- Added questions table and created database connection
 - Added and tested QuizRepository class, which handles saving the new questions to SQLite database
 - Added and tested features as of now for QuizService class, which handles the user interface for the quiz app
 - User has a view to see all of the multiple choice questions and options (to be update to show them question by question)

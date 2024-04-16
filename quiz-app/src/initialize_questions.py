@@ -3,7 +3,7 @@ from repositories.quiz_repository import QuizRepository
 from entities.quiz import Quiz
 
 
-def initialize_questions():
+def initialize_questions() -> object:
 
     connection = get_database_connection()
     quiz_repository = QuizRepository(connection)

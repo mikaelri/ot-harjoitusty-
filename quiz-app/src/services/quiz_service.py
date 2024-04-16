@@ -15,14 +15,14 @@ class QuestionService:
     #     correct_answer = quiz.correct_option
     #     return correct_answer == user_choice
 
-    def show_questions(self):
+    def show_questions(self) -> list:
         questions = self._quiz_repository.get_all()
 
         random.shuffle(questions)
 
         return questions
 
-    def create_question(self, question_id, question, options, correct_option):
+    def create_question(self, question_id, question, options, correct_option) -> object:
         new_question = Quiz(question_id, question, options, correct_option)
 
         return self._quiz_repository.create_question(new_question)

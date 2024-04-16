@@ -38,7 +38,7 @@ class UserService:
         self._user = None
         self._user_repository = user_repository
 
-    def login(self, username, password):
+    def login(self, username, password) -> object:
         """handles the login for user.
         Args:
             username:
@@ -60,14 +60,14 @@ class UserService:
         self._user = user
         return user
 
-    def get_current_user(self):
+    def get_current_user(self) -> object:
         """gets the current user
          Returns:
             Current logged in user
         """
         return self._user
 
-    def get_users(self):
+    def get_users(self) -> list:
         """gets all users
         Returns:
             A list of all users
@@ -78,7 +78,7 @@ class UserService:
         """log out the current user"""
         self._user = None
 
-    def create_user(self, username, password, password2, login=True):
+    def create_user(self, username, password, password2, login=True) -> object:
         """create a new user
         Args:
             username:

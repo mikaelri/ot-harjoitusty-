@@ -2,7 +2,7 @@ from entities.user import User
 from database_connection import get_database_connection
 
 
-def get_user_by_row(row):
+def get_user_by_row(row) -> object:
     return User(row["username"], row["password"]) if row else None
 
 
@@ -10,14 +10,14 @@ class UserRepository:
     def __init__(self, connection):
         self._connection = connection
 
-    def get_all(self):
+    def get_all(self) -> list:
         cursor = self._connection.cursor()
         cursor.execute("SELECT * FROM users")
         rows = cursor.fetchall()
 
         return list(map(get_user_by_row, rows))
 
-    def get_by_username(self, username):
+    def get_by_username(self, username) -> str:
         cursor = self._connection.cursor()
 
         cursor.execute("SELECT * from users WHERE username = ?", (username,))
@@ -25,7 +25,7 @@ class UserRepository:
 
         return get_user_by_row(row)
 
-    def create_user(self, user):
+    def create_user(self, user) -> object:
         cursor = self._connection.cursor()
         cursor.execute(
             "INSERT INTO users (username, password) values (?, ?)",
