@@ -9,6 +9,9 @@ class TestUserRepository(unittest.TestCase):
         self.user_player1 = User("player1", "player1password")
         self.user_player2 = User("player2", "player2password")
 
+    def tearDown(self):
+        user_repository.delete_all()
+
     def test_create_user_finds_correct_user(self):
         user = user_repository.create_user(self.user_player1)
         all_users = user_repository.get_all()
