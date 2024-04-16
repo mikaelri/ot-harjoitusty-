@@ -60,7 +60,8 @@ class CreateUserPage:
             user_service.create_user(username, password, password2)
             self._handle_create_user()
         except UsernameExistsError:
-            self._show_error("Username {username} exists, choose a new one")
+            self._show_error(
+                f"Username {username} already exists, choose a new one")
         except InvalidCredentialsError:
             self._show_error("Username must be at least 3 characters")
         except PasswordError:

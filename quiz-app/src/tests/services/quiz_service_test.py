@@ -38,7 +38,6 @@ class TestQuestionService(unittest.TestCase):
             question_id, question, options, correct_option)
 
         all_questions = self.quiz_service.show_questions()
-        print(all_questions)
 
         self.assertEqual(len(all_questions), 1)
         self.assertEqual(all_questions[0].question_id, 1)
