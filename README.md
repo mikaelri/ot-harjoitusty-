@@ -30,16 +30,16 @@ Create the database and initialize the questions for the quiz inside the *quiz-a
 poetry run invoke create
 ```
 
-Start the application inside *the quiz-app folder* with command
+Start the application inside the *quiz-app folder* with command
 ```
 poetry run invoke start
 ```
 
-Activate the virtual environment before running the tests with command
+Activate the virtual environment inside the *quiz-app folder* before running the tests with command
 ```
 poetry shell
 ```
-Run the tests when virtual environment is on and get coverage report inside *the quiz-app folder* with command
+Run the tests inside the *quiz-app folder* when virtual environment is on and get coverage report with command
 ```
 poetry run invoke coverage-report
 ```
