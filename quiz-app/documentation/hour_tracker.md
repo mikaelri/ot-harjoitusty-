@@ -9,4 +9,5 @@
 | 12.4              | 3,5    | Created architecture diagrams and database schema and few questions for questions table |
 | 15.4              | 5    | Updated questions, added a basis of quiz view and started quiz features, updated ui |
 | 16.4              | 6    | Fixed test database connection, added tests for initializing the questions and tested QuestionService and QuestionRepository classes |
-| **Total hours**   | **32**
+| 18.4              | 4    | Added sequence diagrams for main app features, added user_stats class, updated creating a new user feature, other minor alignments after adding the user_stats |
+| **Total hours**   | **36**

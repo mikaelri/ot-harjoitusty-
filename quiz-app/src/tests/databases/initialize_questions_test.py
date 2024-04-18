@@ -9,7 +9,8 @@ class TestInitializeQuestions(unittest.TestCase):
         self.mock_question_repository = Mock()
 
     def test_initialize_questions_works(self):
-        initialize_questions(self.mock_connection, self.mock_question_repository)
+        initialize_questions(self.mock_connection,
+                             self.mock_question_repository)
 
         self.mock_question_repository.create_question.assert_called()
         self.mock_connection.commit.assert_called_once()
