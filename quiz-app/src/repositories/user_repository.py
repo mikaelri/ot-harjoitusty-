@@ -1,3 +1,4 @@
+import sqlite3
 from entities.user import User
 from database_connection import get_database_connection
 
@@ -27,13 +28,26 @@ class UserRepository:
 
     def create_user(self, user) -> object:
         cursor = self._connection.cursor()
-        cursor.execute(
-            "INSERT INTO users (username, password) values (?, ?)",
-            (user.username, user.password)
-        )
-        self._connection.commit()
+        try:
+            self._connection.execute("BEGIN")
+            cursor.execute(
+                "INSERT INTO users (username, password) values (?, ?)",
+                (user.username, user.password)
+            )
 
-        return user
+            cursor.execute(
+                "INSERT INTO user_stats (username, quiz_points) values (?, ?)",
+                (user.username, 0)
+            )
+            self._connection.commit()
+            return user
+
+        except sqlite3.IntegrityError as error:
+            self._connection.rollback()
+            raise ValueError(f"Could not create user: {str(error)}") from error
+        except Exception as error:
+            self._connection.rollback()
+            raise RuntimeError(f"An error occurred: {str(error)}") from error
 
     def delete_all(self):
         cursor = self._connection.cursor()

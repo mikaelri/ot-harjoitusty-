@@ -40,5 +40,14 @@ class QuestionRepository:
         cursor.execute("DELETE FROM questions")
         self._connection.commit()
 
+    def add_points(self, user):
+        # this method is used to add points for the user in user_stats table
+        pass
+
+    def get_points(self, user):
+        # this method should return the points from user_stats table for the given user
+        # this is needed for the total points when the quiz ends
+        pass
+
 
 question_repository = QuestionRepository(get_database_connection())

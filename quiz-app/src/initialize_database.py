@@ -6,6 +6,7 @@ def drop_tables(connection):
 
     cursor.execute("DROP TABLE if exists users;")
     cursor.execute("DROP TABLE if exists questions;")
+    cursor.execute("DROP TABLE if exists user_stats;")
 
     connection.commit()
 
@@ -17,6 +18,20 @@ def create_table_users(connection):
         CREATE TABLE users (
             username TEXT PRIMARY KEY NOT NULL,
             password TEXT NOT NULL
+            );
+    """)
+
+    connection.commit()
+
+
+def create_table_user_stats(connection):
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        CREATE TABLE user_stats(
+            username INTEGER NOT NULL,
+            quiz_points INTEGER DEFAULT 0,
+            FOREIGN KEY(username) REFERENCES users(username)
             );
     """)
 
@@ -47,6 +62,7 @@ def initialize_database():
     drop_tables(connection)
     create_table_users(connection)
     create_table_questions(connection)
+    create_table_user_stats(connection)
 
 
 if __name__ == "__main__":

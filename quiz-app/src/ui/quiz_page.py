@@ -50,9 +50,8 @@ class QuizPage:
 
         if selected_answer == correct_answer:
             pass
-            ### own notes, to be deleted ###
-            ### collect points from correct answers, 1 pts###
-            ### create a function so that the self._user will gather points with correct answers##
+            ### question_service will check if the answer was correct ###
+            ### question_service will calculate the points and adds those to the User object ###
         else:
             ### 0 pts for wrong answer###
             pass
@@ -62,7 +61,7 @@ class QuizPage:
             self._show_quiz_questions()
         else:
             ### quiz will end and the final results will be shown when there is no more questions###
-            ### create a function so that the self._user points will be shown here ###
+            # when there is no more questions we should call the get_points() from QuestionService
             ### add a end quiz button, which will direct the user to the user page ###
             pass
 
