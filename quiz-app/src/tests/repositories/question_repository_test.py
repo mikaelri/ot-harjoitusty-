@@ -7,8 +7,7 @@ class TestQuestionRepository(unittest.TestCase):
     def setUp(self):
         question_repository.delete_all()
         self.question = Quiz(1, "What is the capital of Finland?", [
-            "Stockholm", "Helsinki", "Oslo", "Copenhagen"
-        ], 2)
+            "Stockholm", "Helsinki", "Oslo", "Copenhagen"], "Helsinki")
 
     def test_create_new_question_creates_correct_question(self):
         question = question_repository.create_question(self.question)

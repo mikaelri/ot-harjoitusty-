@@ -26,7 +26,7 @@ class TestQuestionService(unittest.TestCase):
 
         self.question_package = Quiz(1, "What is the capital of Finland?", [
             "Stockholm", "Helsinki", "Oslo", "Copenhagen"
-        ], 2)
+        ], "Helsinki")
 
     def test_questions_are_shown_correctly(self):
         question_id = self.question_package.question_id
@@ -45,4 +45,4 @@ class TestQuestionService(unittest.TestCase):
                          "What is the capital of Finland?")
         self.assertEqual(all_questions[0].options, [
                          "Stockholm", "Helsinki", "Oslo", "Copenhagen"])
-        self.assertEqual(all_questions[0].correct_option, 2)
+        self.assertEqual(all_questions[0].correct_option, "Helsinki")

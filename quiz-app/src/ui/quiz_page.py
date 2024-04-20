@@ -10,7 +10,7 @@ class QuizPage:
         self._handle_user_page = handle_user_page
         self._frame = None
         self._user = user_service.get_current_user()
-        self._questions = []
+        self._questions = question_service.show_questions()
         self._current_question_index = 0
         self._current_question = None
 
@@ -25,45 +25,59 @@ class QuizPage:
         self._frame.destroy()
 
     def _show_quiz_questions(self):
-        self.questions = question_service.show_questions()
-        self._current_question_index = 0
-        self.current_question = self.questions[self._current_question_index]
-        question_index = 1
+        # update that the buttons are set in a way that?:
+        # option option
+        # option option
+        if self._current_question:
+            self._current_question.grid_forget()        
 
-        for question in self.questions:
-            question_label = ttk.Label(self._frame, text=question.question)
-            question_label.grid(row=question_index + 1,
-                                column=0, sticky=constants.W, padx=10, pady=5)
+        if self._current_question_index < len(self._questions):
+            current_question = self._questions[self._current_question_index]
+            question_label = ttk.Label(
+                master=self._frame,
+                text=current_question.question
+            )
+            question_label.grid(row=1, column=0, padx=5, pady=10, sticky="N")
+            self._current_question = question_label
 
-            for idx, option in enumerate(question.options):
+            for i, option in enumerate(current_question.options):
                 option_button = ttk.Button(
-                    self._frame, text=option, command=lambda idx=idx: self._handle_option(idx))
-                option_button.grid(
-                    row=question_index + 2, column=idx, sticky=constants.W, padx=10, pady=2)
+                    master=self._frame,
+                    text=option,
+                    command=lambda idx=i, question=current_question: self._handle_option(
+                        question, idx)
+                )
+                option_button.grid(row=i+2, column=0, padx=5,
+                                   pady=5, sticky=constants.N)
 
-            question_index += 2
+    def _handle_option(self, question, option_index):
+        selected_option = question.options[option_index]
+        is_correct = question_service.check_answer(question, selected_option)
 
-    def _handle_option(self, option_index):
-        selected_answer = option_index + 1
-        current_question = self.current_question
-        correct_answer = current_question.correct_option
+        if is_correct:
+            question_service.calculate_points(
+                self._user, question, selected_option)
 
-        if selected_answer == correct_answer:
-            pass
-            ### question_service will check if the answer was correct ###
-            ### question_service will calculate the points and adds those to the User object ###
-        else:
-            ### 0 pts for wrong answer###
-            pass
+        self._current_question_index += 1
 
-        if self.current_question_index < len(self.questions):
-            self.current_question = self.questions[self.current_question_index + 1]
+        if self._current_question_index < len(self._questions):
             self._show_quiz_questions()
+            ### add that ending quiz while still playing puts the user points to zero ###
+            ### if the user plays all the questions, then no need to update points to zero ###
+            ### as starting new quiz will initialize the user_points already ###
+            # for keeping up the highscore of the user, must add possibly the following:
+            # - user_stats db a new column "highscore"
+            # - logic that the highscore is replaced with quiz_points if quiz_points > highscore
+            # - highscore will be kept for the user and not initialized, initialize only quiz_points
         else:
-            ### quiz will end and the final results will be shown when there is no more questions###
-            # when there is no more questions we should call the get_points() from QuestionService
-            ### add a end quiz button, which will direct the user to the user page ###
-            pass
+            self._end_quiz()
+
+    def _end_quiz(self):
+        total_points = question_service.get_points(self._user)
+        ttk.Label(
+            master=self._frame,
+            text=f"Quiz ended. You scored {total_points} points."
+        ).grid(row=self._current_question_index + 2, column=0, padx=5, pady=10, sticky=constants.W)
 
     def _initialize_header(self):
         quiz_label = ttk.Label(

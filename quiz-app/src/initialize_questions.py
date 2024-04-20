@@ -19,27 +19,27 @@ def initialize_questions(connection=None, question_repository=None) -> object:
 
         questions = [
             Quiz(None, "What is the largest planet in the Solar system?",
-                 ["Mars", "Pluto", "Jupiter", "Venus"], 3),
+                 ["Mars", "Pluto", "Jupiter", "Venus"], "Jupiter"),
 
             Quiz(None, "What is the capital of Australia?", [
-                "Perth", "Sidney", "Canberra", "Melbourne"], 3),
+                "Perth", "Sidney", "Canberra", "Melbourne"], "Canberra"),
 
             Quiz(None, "Who won the icehockey World cup in 1995?", [
-                "USA", "Sweden", "Finland", "Canada"], 3),
+                "USA", "Sweden", "Finland", "Canada"], "Finland"),
 
             Quiz(None, "In what year Finland participated in the football European cup?", [
-                "1992", "2002", "2022", "2021"], 4),
+                "1992", "2002", "2022", "2021"], "2021"),
 
             Quiz(None, "In what year Finland won the Eurovision song contest?", [
-                "1996", "1998", "2012", "2006"], 4),
+                "1996", "1998", "2012", "2006"], "2006"),
 
             Quiz(None, "What is the largest lake in Finland?", [
-                "Päijänne", "Saimaa", "Oulujärvi", "Inarijärvi"], 2),
+                "Päijänne", "Saimaa", "Oulujärvi", "Inarijärvi"], "Saimaa"),
         ]
 
         for quiz in questions:
             question_repository.create_question(quiz)
-        print('Questions initialized for the quiz')
+        print('Questions initialized for the quiz, you can start playing!')
 
     except DatabaseError as error:
         print(f'Error: {error}')

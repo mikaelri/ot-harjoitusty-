@@ -1,5 +1,6 @@
 from tkinter import ttk, constants
 from services.user_service import user_service
+from services.question_service import question_service
 
 
 class UserPage:
@@ -43,12 +44,16 @@ class UserPage:
         )
         quiz_info.grid(row=1, column=0, padx=5, pady=10, sticky=constants.N)
 
+    def _start_new_quiz(self):
+        question_service.initialize_points(self._user.username)
+        self._handle_start_quiz()
+
     def _initialize_new_quiz(self):
         start_quiz_button = ttk.Button(
             master=self._frame,
             style='startquiz.TButton',
             text='Start a new quiz',
-            command=self._handle_start_quiz
+            command=self._start_new_quiz
         )
 
         style = ttk.Style(self._frame)

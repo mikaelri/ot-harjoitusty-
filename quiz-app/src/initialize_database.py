@@ -50,7 +50,7 @@ def create_table_questions(connection):
             option_2 TEXT NOT NULL,
             option_3 TEXT NOT NULL,
             option_4 TEXT NOT NULL,
-            correct_option INTEGER NOT NULL CHECK (correct_option BETWEEN 1 AND 4)
+            correct_option TEXT NOT NULL
             );
     """)
 

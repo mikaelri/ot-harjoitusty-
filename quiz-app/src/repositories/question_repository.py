@@ -12,10 +12,10 @@ def get_question_by_row(row) -> object:
 
 
 class QuestionRepository:
-    def __init__(self, connection):
+    def __init__(self, connection: str):
         self._connection = connection
 
-    def create_question(self, quiz) -> object:
+    def create_question(self, quiz: object) -> object:
         cursor = self._connection.cursor()
         cursor.execute(
             """INSERT INTO questions 
@@ -40,14 +40,25 @@ class QuestionRepository:
         cursor.execute("DELETE FROM questions")
         self._connection.commit()
 
-    def add_points(self, user):
-        # this method is used to add points for the user in user_stats table
-        pass
+    def get_points(self, username: str) -> int:
+        cursor = self._connection.cursor()
+        cursor.execute(
+            "SELECT quiz_points FROM user_stats WHERE username = ?", (username,))
+        row = cursor.fetchone()
 
-    def get_points(self, user):
-        # this method should return the points from user_stats table for the given user
-        # this is needed for the total points when the quiz ends
-        pass
+        return row[0] if row else 0
+
+    def add_points(self, username: str):
+        cursor = self._connection.cursor()
+        cursor.execute("""UPDATE user_stats SET quiz_points = quiz_points +1 WHERE username = ?""",
+                       (username,))
+        self._connection.commit()
+
+    def initialize_points(self, username: str):
+        cursor = self._connection.cursor()
+        cursor.execute(
+            "UPDATE user_stats SET quiz_points = 0 WHERE username = ?", (username,))
+        self._connection.commit()
 
 
 question_repository = QuestionRepository(get_database_connection())

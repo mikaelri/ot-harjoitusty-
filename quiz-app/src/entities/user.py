@@ -39,5 +39,5 @@ class UserStats:
             quiz_points:
                 points from the quiz for the user
         """
-        self.user_id = username
+        self.username = username
         self.quiz_points = quiz_points

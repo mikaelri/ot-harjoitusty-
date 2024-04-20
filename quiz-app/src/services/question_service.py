@@ -23,22 +23,25 @@ class QuestionService:
 
         return self._question_repository.create_question(new_question)
 
-    def check_answer(self, quiz: Quiz, user_answer: int) -> bool:
-        # to be updated
+    def check_answer(self, quiz: Quiz, user_answer: str) -> bool:
         correct_answer = quiz.correct_option
         return correct_answer == user_answer
 
-    def calculate_points(self, user: object):
-        # increment points if answer was correct in check_answer() function
-        # add_points() in QuestionRepository should increment the points to db so we need to
-        # call that function here as well
-        # this function might not need to return anything as it just keeps the score
-        pass
+    def calculate_points(self, user: object, quiz: Quiz, user_answer: int) -> int:
+        user_points = self._question_repository.get_points(user.username)
+        correct_answer = self.check_answer(quiz, user_answer)
+
+        if correct_answer:
+            self._question_repository.add_points(user.username)
+            user_points += 1
+
+        return user_points
 
     def get_points(self, user: object) -> int:
-        # this returns the final points when the quiz ends.
-        # this calls the get_points() from QuestionRepository
-        pass
+        return self._question_repository.get_points(user.username)
+
+    def initialize_points(self, username: str) -> int:
+        return self._question_repository.initialize_points(username)
 
 
 question_service = QuestionService()
