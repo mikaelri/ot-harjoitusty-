@@ -27,10 +27,10 @@ Admin user could add new questions to the quiz or handle user management.
   
 ### After login
 * User can start a new quiz ⏳
-  * User sees the question (fixed/limited amount) and four options (generated randomly and in random order) ⏳
-  * User can select an option and submit it ❌
+  * User sees the question (fixed/limited amount) and four options (generated randomly and in random order) ✅
+  * User can select an option and submit it ✅
   * Application tells if the users answer was correct or wrong ❌
-  * Application keeps score of the users points and at the end shows the total score ❌
+  * Application keeps score of the users points and at the end shows the total score ✅
 * User can see highscores of the same users in same computer ❌
 * User can logout ✅ 
 

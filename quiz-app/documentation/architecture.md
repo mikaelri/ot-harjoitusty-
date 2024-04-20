@@ -74,9 +74,9 @@ UserRepository -->> UserService: user
 ### User starting / playing the quiz
 In the user page, the user clicks "Start a new quiz" to began the quiz.
 
-The ui calls show_questions() method from the application logic, QuestionService class, which returns a list of questions and answers with a help of get_all() method from QuestionRepository class.<br>
+The ui calls show_questions() method from the application logic, QuestionService class, which returns a list of questions and answers with a help of get_all() method from QuestionRepository class. The questions are shown to the user one by one. 
 
-The questions are shown to the user one by one. The user will select an answer, which triggers a call of check_answer(user_answer) method in QuestionService. This method returns boolean value true or false depending on the user_answer. If the user_answer was correct, the user (UserStats object; username, quiz_points) will get one point and if the answer was incorrect, zero points and this is done with calculate_points(user) in QuestionService and add_points(user) in QuestionRepository. When the user has answered to all of the questions, get_points(user) is triggered both in services and repositories for getting the final score of the user.
+The user will select an answer, which triggers a call of check_answer(quiz, user_answer) method in QuestionService. This method returns boolean value true or false depending on the user_answer. If the user_answer was correct, the user (UserStats object; username, quiz_points) will get one point and if the answer was incorrect, zero points and this is done with calculate_points(user, quiz, user_answer) in QuestionService and add_points(user) in QuestionRepository. When the user has answered to all of the questions, get_points(user) is triggered both in services and repositories for getting the final score of the user.
 
 UserStats is referenced to User via username to keep up the score of correct user.<br> Quiz class helds the data model of id, question, options and correct option for all of the questions.
 
@@ -97,17 +97,18 @@ QuestionService ->> QuestionRepository: get_all()
 QuestionRepository -->> QuestionService: questions
 
 ui ->> QuestionService: click selected "answer" button
-ui ->> QuestionService: check_answer(user_answer)
+ui ->> QuestionService: check_answer(quiz, user_answer)
+
 QuestionService -->> ui: True/False (answer)
 QuestionService ->> Quiz: Quiz(question_id, "question", [options], correct_option)
 QuestionService ->> UserStats: UserStats("player1", quiz_points)
 UserStats -> User: username referenced to the User model
 
-ui ->> QuestionService: calculate_points(user)
-QuestionService ->> QuestionRepository: add_points(user)
+ui ->> QuestionService: calculate_points(user, quiz, user_answer)
+QuestionService ->> QuestionRepository: add_points(username)
 
 ui ->> QuestionService: quiz ends, get_points(user)
 QuestionService -->> ui: quiz_points
-QuestionService ->> QuestionRepository: get_points(user)
+QuestionService ->> QuestionRepository: get_points(username)
 QuestionRepository -->> QuestionService: quiz_points
 ```
