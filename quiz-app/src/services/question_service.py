@@ -14,6 +14,9 @@ class QuestionService:
     def show_questions(self) -> list:
         questions = self._question_repository.get_all()
 
+        for question in questions:
+            question.randomize_options()
+            
         random.shuffle(questions)
 
         return questions

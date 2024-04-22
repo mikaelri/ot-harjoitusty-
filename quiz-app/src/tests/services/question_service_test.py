@@ -77,12 +77,13 @@ class TestQuestionService(unittest.TestCase):
         self.create_questions(question_id, question, options, correct_option)
         all_questions = self.get_questions()
 
+        all_options = {"Stockholm", "Helsinki", "Oslo", "Copenhagen"}
+
         self.assertEqual(len(all_questions), 1)
         self.assertEqual(all_questions[0].question_id, 1)
         self.assertEqual(all_questions[0].question,
                          "What is the capital of Finland?")
-        self.assertEqual(all_questions[0].options, [
-                         "Stockholm", "Helsinki", "Oslo", "Copenhagen"])
+        self.assertEqual(set(all_questions[0].options), all_options)
         self.assertEqual(all_questions[0].correct_option, "Helsinki")
 
     def test_check_correct_answer_returns_True_and_points_are_increased(self):
@@ -132,7 +133,8 @@ class TestQuestionService(unittest.TestCase):
         quiz_question = all_questions[0]
         user_answer = "Helsinki"
 
-        get_initial_points = self.question_service.get_points(self.user_player1)
+        get_initial_points = self.question_service.get_points(
+            self.user_player1)
         self.assertEqual(get_initial_points, 0)
 
         self.check_answer(quiz_question, user_answer)

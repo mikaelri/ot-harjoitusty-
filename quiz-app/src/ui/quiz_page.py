@@ -25,9 +25,6 @@ class QuizPage:
         self._frame.destroy()
 
     def _show_quiz_questions(self):
-        # update that the buttons are set in a way that?:
-        # option option
-        # option option
         if self._current_question:
             self._current_question.grid_forget()
 
@@ -37,19 +34,23 @@ class QuizPage:
                 master=self._frame,
                 text=current_question.question
             )
-            question_label.grid(row=1, column=0, padx=5, pady=10, sticky="N")
+            question_label.grid(row=1, column=0, columnspan=2, padx=5, pady=10, sticky="N")
             self._current_question = question_label
 
             for i, option in enumerate(current_question.options):
+                button_width = 20
+                row = (i // 2) + 2
+                column = i % 2
                 option_button = ttk.Button(
                     master=self._frame,
                     text=option,
+                    width=button_width,
                     command=lambda idx=i, question=current_question: self._handle_option(
                         question, idx)
                 )
-                option_button.grid(row=i+2, column=0, padx=5,
-                                   pady=5, sticky=constants.N)
-
+                option_button.grid(row=row, column=column, padx=5,
+                                   pady=5, sticky="EW")
+                
     def _handle_option(self, question, option_index):
         selected_option = question.options[option_index]
         is_correct = question_service.check_answer(question, selected_option)
@@ -62,9 +63,6 @@ class QuizPage:
 
         if self._current_question_index < len(self._questions):
             self._show_quiz_questions()
-            ### add that ending quiz while still playing puts the user points to zero ###
-            ### if the user plays all the questions, then no need to update points to zero ###
-            ### as starting new quiz will initialize the user_points already ###
             # for keeping up the highscore of the user, must add possibly the following:
             # - user_stats db a new column "highscore"
             # - logic that the highscore is replaced with quiz_points if quiz_points > highscore
@@ -81,8 +79,8 @@ class QuizPage:
 
     def _initialize_header(self):
         quiz_label = ttk.Label(
-            master=self._frame, text=f'Playing as {self._user.username}')
-        quiz_label.grid(row=0, column=0, padx=5, pady=10, sticky=constants.N,)
+            master=self._frame, text=f'Playing as {self._user.username}.')
+        quiz_label.grid(row=0, column=0, padx=5, pady=10, sticky=constants.EW)
 
     def _initialize_user_page(self):
         user_page_button = ttk.Button(
@@ -90,11 +88,12 @@ class QuizPage:
             text="End quiz & return to user page",
             command=self._handle_user_page
         )
-        user_page_button.grid(row=0, padx=5, pady=10, sticky=constants.E)
+        user_page_button.grid(row=0, column=1, padx=5, pady=10, sticky=constants.NE)
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
         self._initialize_header()
         self._initialize_user_page()
         self._show_quiz_questions()
-        self._frame.grid_columnconfigure(0, weight=1)
+        self._frame.grid_columnconfigure(0, weight=1, uniform="group1")
+        self._frame.grid_columnconfigure(1, weight=1, uniform="group1")
