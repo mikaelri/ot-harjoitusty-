@@ -34,7 +34,8 @@ class QuizPage:
                 master=self._frame,
                 text=current_question.question
             )
-            question_label.grid(row=1, column=0, columnspan=2, padx=5, pady=10, sticky="N")
+            question_label.grid(row=1, column=0, columnspan=2,
+                                padx=5, pady=10, sticky="N")
             self._current_question = question_label
 
             for i, option in enumerate(current_question.options):
@@ -50,7 +51,7 @@ class QuizPage:
                 )
                 option_button.grid(row=row, column=column, padx=5,
                                    pady=5, sticky="EW")
-                
+
     def _handle_option(self, question, option_index):
         selected_option = question.options[option_index]
         is_correct = question_service.check_answer(question, selected_option)
@@ -88,7 +89,8 @@ class QuizPage:
             text="End quiz & return to user page",
             command=self._handle_user_page
         )
-        user_page_button.grid(row=0, column=1, padx=5, pady=10, sticky=constants.NE)
+        user_page_button.grid(row=0, column=1, padx=5,
+                              pady=10, sticky=constants.NE)
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)

@@ -1,5 +1,6 @@
 import random
 
+
 class Quiz:
     def __init__(self, question_id: int, question: str, options: list, correct_option: str):
         self.question = question
