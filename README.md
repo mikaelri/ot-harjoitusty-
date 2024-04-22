@@ -62,7 +62,7 @@ poetry run invoke coverage-report
 ```
 
 ### Pylint
-The file .pylintrc has the defined pylint checks, which can be ran with command
+The file [.pylintrc](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/.pylintrc) has the defined pylint checks, which can be ran with command
 ```
 poetry run invoke pylint
 ```
