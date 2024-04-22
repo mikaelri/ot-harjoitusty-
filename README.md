@@ -7,6 +7,10 @@ The project is a **quiz application**, where users are presented with various qu
 ## Python version
 The project has been built and tested with Python-version 3.10. It is possible that with older versions there might occur problmes.
 
+
+## Releases
+[Link to week 5 release](https://github.com/mikaelri/ot-harjoitustyo/releases/tag/week5) 
+
 ## Documentation
 Link to the [Requirements Specification](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/requirements_specification.md)
 
