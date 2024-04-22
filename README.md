@@ -21,7 +21,7 @@ Link to the  [Change Log](https://github.com/mikaelri/ot-harjoitustyo/blob/main/
 Link to the  [Architecture](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/architecture.md)
 
 ## Installation instructions
-Please note that you need to run the following commands inside the **quiz-app folder**.
+Please note that you need to run the following commands inside the **quiz-app** folder.
 
 1. Install the dependencies and requirements with command
 ```
@@ -39,7 +39,7 @@ poetry run invoke start
 ```
 ## Command line commands and testing the application
 
-Please note that you need to run the following commands inside the *quiz-app folder*.
+Please note that you need to run the following commands inside the **quiz-app** folder.
 
 ### Starting the application
 The application can be started with command:
