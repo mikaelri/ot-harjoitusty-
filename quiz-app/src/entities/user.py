@@ -30,7 +30,7 @@ class UserStats:
             points from the quiz for the user
     """
 
-    def __init__(self, username: int, quiz_points: int = 0):
+    def __init__(self, username: str, quiz_points: int = 0):
         """Constructor for the users' stats.
 
         Args:

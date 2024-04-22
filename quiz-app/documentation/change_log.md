@@ -13,6 +13,6 @@
 - User has a view to see all of the multiple choice questions and options (to be updated to show them question by question)
   
 ## Week5
-- Added new features for user playing the quiz for QuestionService and QuestionRepository classes (checking answers, adding points, getting points)
+- Added and tested new features for user playing the quiz for QuestionService and QuestionRepository classes (checking answers, adding points, getting points)
 - User can see the questions one by one in random order and answer these, correct answer will increase the quiz points by +1 and incorrect does not increase, this is saved to the database.
 - User can see the total points of the quiz once all of the questions are answered

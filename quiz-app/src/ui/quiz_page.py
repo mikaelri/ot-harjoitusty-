@@ -29,7 +29,7 @@ class QuizPage:
         # option option
         # option option
         if self._current_question:
-            self._current_question.grid_forget()        
+            self._current_question.grid_forget()
 
         if self._current_question_index < len(self._questions):
             current_question = self._questions[self._current_question_index]

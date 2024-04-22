@@ -40,6 +40,11 @@ class QuestionRepository:
         cursor.execute("DELETE FROM questions")
         self._connection.commit()
 
+    def delete_all_user_points(self) -> None:
+        cursor = self._connection.cursor()
+        cursor.execute("DELETE FROM user_stats")
+        self._connection.commit()
+
     def get_points(self, username: str) -> int:
         cursor = self._connection.cursor()
         cursor.execute(

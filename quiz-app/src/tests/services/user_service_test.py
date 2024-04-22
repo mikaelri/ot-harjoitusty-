@@ -37,13 +37,19 @@ class TestUserService(unittest.TestCase):
         fake_user_repository.delete_all()
         self.user_player1 = User("player1", "player1password")
 
+    def create_new_user(self, username, password, password2):
+        return self.user_service.create_user(username, password, password2)
+
+    def login_user(self, username, password):
+        return self.user_service.login(username, password)
+
     def test_create_new_user(self):
         username = self.user_player1.username
         password = self.user_player1.password
         password2 = self.user_player1.password
         all_users = self.user_service.get_users()
 
-        self.user_service.create_user(username, password, password2)
+        self.create_new_user(username, password, password2)
 
         self.assertEqual(len(all_users), 1)
         self.assertEqual(all_users[0].username, username)
@@ -54,10 +60,10 @@ class TestUserService(unittest.TestCase):
         password = self.user_player1.password
         password2 = self.user_player1.password
 
-        self.user_service.create_user(username, password, password2)
+        self.create_new_user(username, password, password2)
 
         with self.assertRaises(UsernameExistsError):
-            self.user_service.create_user(username, password, password2)
+            self.create_new_user(username, password, password2)
 
     def test_creating_user_with_too_short_username_raises_credentials_error(self):
         with self.assertRaises(InvalidCredentialsError):
@@ -70,7 +76,7 @@ class TestUserService(unittest.TestCase):
         password2 = "wrongpassword"
 
         with self.assertRaises(PasswordError):
-            self.user_service.create_user(username, password, password2)
+            self.create_new_user(username, password, password2)
 
     def test_creating_user_with_too_short_password_raises_password_error(self):
         username = self.user_player1.username
@@ -78,15 +84,15 @@ class TestUserService(unittest.TestCase):
         password2 = "short"
 
         with self.assertRaises(PasswordTooShortError):
-            self.user_service.create_user(username, password, password2)
+            self.create_new_user(username, password, password2)
 
     def test_created_user_can_login(self):
         username = self.user_player1.username
         password = self.user_player1.password
         password2 = self.user_player1.password
 
-        self.user_service.create_user(username, password, password2)
-        user = self.user_service.login(username, password)
+        self.create_new_user(username, password, password2)
+        user = self.login_user(username, password)
         self.assertEqual(user.username, username)
 
     def test_login_conditional_statement_True(self):
@@ -96,7 +102,7 @@ class TestUserService(unittest.TestCase):
 
         self.user_service.create_user(
             username, password, password2, login=True)
-        current_user = self.user_service.login(username, password)
+        current_user = self.login_user(username, password)
         self.assertIsNotNone(current_user.username)
 
     def test_login_conditional_statement_False(self):
@@ -121,15 +127,15 @@ class TestUserService(unittest.TestCase):
 
     def test_login_raises_credentials_error(self):
         with self.assertRaises(InvalidCredentialsError):
-            self.user_service.login("testuser", "testpassword")
+            self.login_user("testuser", "testpassword")
 
     def test_logout_is_succesful(self):
         username = self.user_player1.username
         password = self.user_player1.password
         password2 = self.user_player1.password
 
-        self.user_service.create_user(username, password, password2)
-        self.user_service.login(username, password)
+        self.create_new_user(username, password, password2)
+        self.login_user(username, password)
         logout_user = self.user_service.logout()
 
         self.assertEqual(logout_user, None)
