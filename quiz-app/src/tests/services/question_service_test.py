@@ -133,7 +133,7 @@ class TestQuestionService(unittest.TestCase):
         user_answer = "Helsinki"
 
         get_initial_points = self.question_service.get_points(self.user_player1)
-        self.assertEqual(initial_points, 0)
+        self.assertEqual(get_initial_points, 0)
 
         self.check_answer(quiz_question, user_answer)
         self.question_service.calculate_points(
