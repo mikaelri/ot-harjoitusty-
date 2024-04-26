@@ -1,11 +1,14 @@
 import unittest
 from repositories.user_repository import user_repository
+from repositories.question_repository import question_repository
 from entities.user import User
 
 
 class TestUserRepository(unittest.TestCase):
     def setUp(self):
         user_repository.delete_all()
+        question_repository.delete_all_user_points()
+        
         self.user_player1 = User("player1", "player1password")
         self.user_player2 = User("player2", "player2password")
 
