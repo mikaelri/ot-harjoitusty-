@@ -2,6 +2,12 @@ from database_connection import get_database_connection
 
 
 def drop_tables(connection):
+    """Deletes the tables from the database schema.
+
+    Args:
+        connection connection: object to use as connection for the application.
+    """
+
     cursor = connection.cursor()
 
     cursor.execute("DROP TABLE if exists users;")
@@ -12,6 +18,12 @@ def drop_tables(connection):
 
 
 def create_table_users(connection):
+    """Creates the user table to the database schema.
+
+    Args:
+        connection connection: object to use as connection for the application.
+    """
+
     cursor = connection.cursor()
 
     cursor.execute("""
@@ -25,6 +37,12 @@ def create_table_users(connection):
 
 
 def create_table_user_stats(connection):
+    """Creates the user_stats table to the database schema.
+
+    Args:
+        connection connection: object to use as connection for the application.
+    """
+
     cursor = connection.cursor()
 
     cursor.execute("""
@@ -39,6 +57,11 @@ def create_table_user_stats(connection):
 
 
 def create_table_questions(connection):
+    """Creates the questions table to the database schema.
+
+    Args:
+        connection connection: object to use as connection for the application.
+    """
 
     cursor = connection.cursor()
 
@@ -58,6 +81,8 @@ def create_table_questions(connection):
 
 
 def initialize_database():
+    """Initializes the database with connection object."""
+
     connection = get_database_connection()
     drop_tables(connection)
     create_table_users(connection)

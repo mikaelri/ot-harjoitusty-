@@ -5,6 +5,14 @@ from entities.quiz import Quiz
 
 
 def initialize_questions(connection=None, question_repository=None) -> object:
+    """Initializes the questions for the quiz, with reaady-to-use questions.
+
+    Args:
+        connection: 
+            Object to use as connection for quiz.
+        question_repository: 
+            Class, which handles the database operations for the questions.
+    """
 
     if connection is None:
         connection = get_database_connection()

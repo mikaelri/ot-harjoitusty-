@@ -2,7 +2,16 @@ from database_connection import get_database_connection
 from entities.quiz import Quiz
 
 
-def get_question_by_row(row) -> object:
+def get_question_by_row(row: any) -> object:
+    """Gets the questions in a row, used in mapping all of the questions to a list.
+
+    Args:
+        row:
+            Selected variable for the questions table
+    Returns:
+        A question object in a row, formed in Quiz model from entities or None.
+    """
+
     return Quiz(
         row['question_id'],
         row['question'],
@@ -12,10 +21,28 @@ def get_question_by_row(row) -> object:
 
 
 class QuestionRepository:
-    def __init__(self, connection: str):
+    """Class taking care of the quiz related database operations."""
+
+    def __init__(self, connection: object):
+        """Constructor for QuestionRepository class, handles the quiz database changes for th user
+        and questions.
+
+        Args:
+            connection: Database object for the connection.
+        """
+
         self._connection = connection
 
     def create_question(self, quiz: object) -> object:
+        """Creates the question to the database.
+
+        Args:
+            quiz:
+                A question to be saved to the database as object.
+        Returns:
+            Saved question as object.
+        """
+
         cursor = self._connection.cursor()
         cursor.execute(
             """INSERT INTO questions 
@@ -29,6 +56,12 @@ class QuestionRepository:
         return quiz
 
     def get_all(self) -> list:
+        """Gets all questions from the database.
+
+        Returns:
+            A list of all questions.
+        """
+
         cursor = self._connection.cursor()
         cursor.execute("SELECT * FROM questions")
         rows = cursor.fetchall()
@@ -36,16 +69,29 @@ class QuestionRepository:
         return list(map(get_question_by_row, rows))
 
     def delete_all(self) -> None:
+        """Deletes all of the questions from the database."""
+
         cursor = self._connection.cursor()
         cursor.execute("DELETE FROM questions")
         self._connection.commit()
 
     def delete_all_user_points(self) -> None:
+        """Deletes all of the user points from the database."""
+
         cursor = self._connection.cursor()
         cursor.execute("DELETE FROM user_stats")
         self._connection.commit()
 
     def get_points(self, username: str) -> int:
+        """Get the quiz points for the current user playing from the database.
+
+        Args:
+            username:
+                String variable, represenets the username for the user object.
+        Returns:
+            The quiz points of the username for the user object or 0.
+        """
+
         cursor = self._connection.cursor()
         cursor.execute(
             "SELECT quiz_points FROM user_stats WHERE username = ?", (username,))
@@ -53,13 +99,27 @@ class QuestionRepository:
 
         return row[0] if row else 0
 
-    def add_points(self, username: str):
+    def add_points(self, username: str) -> None:
+        """Adds points to the database for the current user playing the quiz.
+
+        Args:
+            username:
+                String variable, represenets the username for the user object.
+        """
+
         cursor = self._connection.cursor()
         cursor.execute("""UPDATE user_stats SET quiz_points = quiz_points +1 WHERE username = ?""",
                        (username,))
         self._connection.commit()
 
-    def initialize_points(self, username: str):
+    def initialize_points(self, username: str) -> None:
+        """Initializes the points to 0 in the database for the current user playing the quiz.
+
+        Args:
+            username:
+                String variable, represenets the username for the user object.
+        """
+
         cursor = self._connection.cursor()
         cursor.execute(
             "UPDATE user_stats SET quiz_points = 0 WHERE username = ?", (username,))

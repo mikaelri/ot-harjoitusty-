@@ -4,7 +4,17 @@ from services.user_service import user_service
 
 
 class QuizPage:
+    """Class, which is used for quiz operations."""
+
     def __init__(self, root, handle_user_page):
+        """Constructor for UserPage class, handles starting a new quiz and logout.
+
+        Args:
+            root: 
+                Base for tkinter, initializes the app view.
+            handle_user_page: 
+                Called variable to end quiz and move to user view.
+        """
 
         self._root = root
         self._handle_user_page = handle_user_page
@@ -18,10 +28,12 @@ class QuizPage:
 
     def pack(self):
         """Showing the view with Tkinter pack-method."""
+
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
         """Deletes the current view."""
+
         self._frame.destroy()
 
     def _show_quiz_questions(self):

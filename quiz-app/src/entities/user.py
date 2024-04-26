@@ -3,19 +3,21 @@ class User:
 
     Attributes:
         username:
-            user's username as a string variable
+            User's username as a string variable.
         password:
-            user's password as a string variable
+            User's password as a string variable.
     """
 
     def __init__(self, username: str, password: str):
-        """Constructor for the class.
+        """Constructor for the class, data model of the User object.
+
         Args:
             username:
-                user's username as a string variable
+                User's username as a string variable.
             password:
-                user's password as a string variable
+                User's password as a string variable.
         """
+
         self.username = username
         self.password = password
 
@@ -25,19 +27,19 @@ class UserStats:
 
     Attributes:
         username:
-            identifier for the user
+            User's username as a string variable, identifier of the user.
         quiz_points:
-            points from the quiz for the user
+            Points from the quiz for the user object.
     """
 
     def __init__(self, username: str, quiz_points: int = 0):
-        """Constructor for the users' stats.
+        """Constructor for the class, data model of the UserStats object.
 
         Args:
             username:
-                identifier for the user
+                User's username as a string variable, identifier of the user.
             quiz_points:
-                points from the quiz for the user
+                Points from the quiz for the user object.
         """
         self.username = username
         self.quiz_points = quiz_points

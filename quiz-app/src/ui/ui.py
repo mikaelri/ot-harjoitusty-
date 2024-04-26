@@ -5,19 +5,14 @@ from ui.quiz_page import QuizPage
 
 
 class UI:
-    """Class to handle the user interface.
-
-    Attributes:
-        root: 
-            base for Tkinter
-    """
+    """Class, which is used to handle the user interface."""
 
     def __init__(self, root):
-        """Constructor for UI class
+        """Constructor for UI class, handles the user interface operations.
 
         Args:
             root: 
-                base for Tkinter
+                base for tkinter, initializes the app view.
         """
 
         self._root = root
@@ -25,6 +20,7 @@ class UI:
 
     def start(self):
         """Starts the user interface"""
+
         self._show_login_page()
 
     def _show_login_page(self):
