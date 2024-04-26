@@ -65,6 +65,9 @@ Run the tests when virtual environment is on and get coverage report with comman
 poetry run invoke coverage-report
 ```
 
+This will create a coverage report to htmlcov folder, which can be opened from terminal after running the tests by clicking `htmlcov/index.html`
+
+
 ### Pylint
 The file [.pylintrc](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/.pylintrc) has the defined pylint checks, which can be ran with command
 ```
