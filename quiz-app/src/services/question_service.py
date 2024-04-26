@@ -120,5 +120,37 @@ class QuestionService:
 
         return self._question_repository.initialize_points(username)
 
+    def update_highscore(self, user: object) -> int:
+        """Updates the highscore of the user object if the user playing gets more points
+        than the previus users highscore.
+
+        Args:
+            user:
+                Object variable of the user playing the quiz.         
+        Returns:
+            Integer variable, represents the highscore for the username.
+        """
+
+        user_points = self._question_repository.get_points(user.username)
+        user_highscore = self._question_repository.get_highscore(user.username)
+
+        if user_points > user_highscore:
+            self._question_repository.update_highscore(user.username)
+            user_highscore = user_points
+
+        return user_highscore
+
+    def get_highscore(self, user: object) -> int:
+        """Gets the current highscore for the user.
+
+        Args:
+            user:
+                Object variable of the user playing the quiz. 
+        Returns:
+            Integer variable, represents the highscore of the user object.
+        """
+
+        return self._question_repository.get_highscore(user.username)
+
 
 question_service = QuestionService()

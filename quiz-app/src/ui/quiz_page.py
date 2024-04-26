@@ -23,6 +23,7 @@ class QuizPage:
         self._questions = question_service.show_questions()
         self._current_question_index = 0
         self._current_question = None
+        self._quiz_ended = False
 
         self._initialize()
 
@@ -65,30 +66,34 @@ class QuizPage:
                                    pady=5, sticky="EW")
 
     def _handle_option(self, question, option_index):
-        selected_option = question.options[option_index]
-        is_correct = question_service.check_answer(question, selected_option)
+        if not self._quiz_ended:
+            selected_option = question.options[option_index]
+            is_correct = question_service.check_answer(
+                question, selected_option)
 
-        if is_correct:
-            question_service.calculate_points(
-                self._user, question, selected_option)
+            if question.question_id not in self._answered_questions:
+                if is_correct:
+                    question_service.calculate_points(
+                        self._user, question, selected_option)
+                    self._answered_questions.add(question.question_id)
 
-        self._current_question_index += 1
+            self._current_question_index += 1
 
-        if self._current_question_index < len(self._questions):
-            self._show_quiz_questions()
-            # for keeping up the highscore of the user, must add possibly the following:
-            # - user_stats db a new column "highscore"
-            # - logic that the highscore is replaced with quiz_points if quiz_points > highscore
-            # - highscore will be kept for the user and not initialized, initialize only quiz_points
-        else:
-            self._end_quiz()
+            if self._current_question_index < len(self._questions):
+                self._show_quiz_questions()
+            else:
+                self._end_quiz()
 
     def _end_quiz(self):
-        total_points = question_service.get_points(self._user)
-        ttk.Label(
-            master=self._frame,
-            text=f"Quiz ended. You scored {total_points} points."
-        ).grid(row=self._current_question_index + 2, column=0, padx=5, pady=10, sticky=constants.W)
+        if not self._quiz_ended:
+            total_points = question_service.get_points(self._user)
+            question_service.update_highscore(self._user)
+            ttk.Label(
+                master=self._frame,
+                text=f"""Quiz ended. You scored {total_points}/{len(self._questions)} points."""
+            ).grid(row=self._current_question_index + 2, column=0, padx=5, pady=10,
+                   sticky=constants.W)
+            self._quiz_ended = True
 
     def _initialize_header(self):
         quiz_label = ttk.Label(
@@ -108,6 +113,7 @@ class QuizPage:
         self._frame = ttk.Frame(master=self._root)
         self._initialize_header()
         self._initialize_user_page()
+        self._answered_questions = set()
         self._show_quiz_questions()
         self._frame.grid_columnconfigure(0, weight=1, uniform="group1")
         self._frame.grid_columnconfigure(1, weight=1, uniform="group1")

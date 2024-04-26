@@ -83,11 +83,11 @@ class QuestionRepository:
         self._connection.commit()
 
     def get_points(self, username: str) -> int:
-        """Get the quiz points for the current user playing from the database.
+        """Get the quiz points from the database for the current user playing.
 
         Args:
             username:
-                String variable, represenets the username for the user object.
+                String variable, represents the username for the user object.
         Returns:
             The quiz points of the username for the user object or 0.
         """
@@ -104,7 +104,7 @@ class QuestionRepository:
 
         Args:
             username:
-                String variable, represenets the username for the user object.
+                String variable, represents the username for the user object.
         """
 
         cursor = self._connection.cursor()
@@ -117,12 +117,42 @@ class QuestionRepository:
 
         Args:
             username:
-                String variable, represenets the username for the user object.
+                String variable, represents the username for the user object.
         """
 
         cursor = self._connection.cursor()
         cursor.execute(
             "UPDATE user_stats SET quiz_points = 0 WHERE username = ?", (username,))
+        self._connection.commit()
+
+    def get_highscore(self, username: str) -> None:
+        """Get the highscore from the database for the current user playing.
+
+        Args:
+            username:
+                String variable, represents the username for the user object.
+        Returns:
+            The highscore of the username for the user object or 0.
+        """
+
+        cursor = self._connection.cursor()
+        cursor.execute(
+            "SELECT highscore FROM user_stats WHERE username = ?", (username,))
+        row = cursor.fetchone()
+
+        return row[0] if row else 0
+
+    def update_highscore(self, username: str) -> None:
+        """Updates the highscore for the user if current quiz_points are higher
+        than previous highscore for the user.
+
+        Args:
+            username:
+                String variable, represents the username for the user object.
+        """
+        cursor = self._connection.cursor()
+        cursor.execute("""UPDATE user_stats SET highscore = quiz_points WHERE username = ?""",
+                       (username,))
         self._connection.commit()
 
 

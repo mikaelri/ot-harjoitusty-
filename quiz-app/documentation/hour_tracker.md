@@ -12,4 +12,5 @@
 | 18.4              | 4    | Added sequence diagrams for main app features, added user_stats class, updated creating a new user feature, other minor alignments after adding the user_stats |
 | 20.4              | 7    | Updated questions table's correct option from integer to str, added logic for checking the users answers, calculating points and fetching the points for repositories and services. Updated ui to show questions randomly for the user and overall added that user can now play the game and go through all questions |
 | 22.4              | 7    | Tested new question services and repositories functions, updated documentation and ReadMe, updated ui |
-| **Total hours**   | **50**
+| 26.4              | 5    | Added docstrings and added highscore related database, services and repositories functionalities, also some minor ui fixes|
+| **Total hours**   | **55**

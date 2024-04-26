@@ -49,6 +49,7 @@ def create_table_user_stats(connection):
         CREATE TABLE user_stats(
             username INTEGER NOT NULL,
             quiz_points INTEGER DEFAULT 0,
+            highscore INTEGER DEFAULT 0,
             FOREIGN KEY(username) REFERENCES users(username)
             );
     """)

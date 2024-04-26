@@ -76,8 +76,8 @@ class UserRepository:
         )
 
         cursor.execute(
-            "INSERT INTO user_stats (username, quiz_points) values (?, ?)",
-            (user.username, 0)
+            "INSERT INTO user_stats (username, quiz_points, highscore) values (?, ?, ?)",
+            (user.username, 0, 0)
         )
         self._connection.commit()
 

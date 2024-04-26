@@ -23,6 +23,7 @@ class UserPage:
         self._handle_logout = handle_logout
         self._frame = None
         self._user = user_service.get_current_user()
+        self._questions = question_service.show_questions()
 
         self._initialize()
 
@@ -47,11 +48,17 @@ class UserPage:
         user_label.grid(row=0, column=0, padx=5, pady=10, sticky=constants.N)
 
     def _initialize_info(self):
-        info_text = '''
-        You will be shown questions with four possible answer options.
-        Your task is to try to select the correct answer.
+        info_text = f'''
+        You will be shown {len(self._questions)} questions with four possible answer options each.
 
-        To start a new quiz, press below - good luck!'''
+                        Your task is to try to select the correct answer.
+                        
+                                Your current highscore is: {
+                                question_service.get_highscore(self._user)}/{
+                                    len(self._questions)} points.
+
+                        To start a new quiz, press below - good luck!'''
+
         quiz_info = ttk.Label(
             master=self._frame,
             text=info_text

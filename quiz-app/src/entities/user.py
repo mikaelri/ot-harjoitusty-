@@ -30,9 +30,11 @@ class UserStats:
             User's username as a string variable, identifier of the user.
         quiz_points:
             Points from the quiz for the user object.
+        highscore:
+            Highest score of the quiz for the user object.
     """
 
-    def __init__(self, username: str, quiz_points: int = 0):
+    def __init__(self, username: str, quiz_points: int = 0, highscore: int = 0):
         """Constructor for the class, data model of the UserStats object.
 
         Args:
@@ -40,6 +42,9 @@ class UserStats:
                 User's username as a string variable, identifier of the user.
             quiz_points:
                 Points from the quiz for the user object.
+            highscore:
+                Highest score of the quiz for the user object.
         """
         self.username = username
         self.quiz_points = quiz_points
+        self.highscore = highscore
