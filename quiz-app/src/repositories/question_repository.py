@@ -125,14 +125,14 @@ class QuestionRepository:
             "UPDATE user_stats SET quiz_points = 0 WHERE username = ?", (username,))
         self._connection.commit()
 
-    def get_highscore(self, username: str) -> None:
+    def get_highscore(self, username: str) -> int:
         """Get the highscore from the database for the current user playing.
 
         Args:
             username:
                 String variable, represents the username for the user object.
         Returns:
-            The highscore of the username for the user object or 0.
+            The highscore of the username for the user object as integer or 0.
         """
 
         cursor = self._connection.cursor()
