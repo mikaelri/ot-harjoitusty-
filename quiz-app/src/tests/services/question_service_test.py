@@ -10,6 +10,8 @@ class FakeQuestionRepository:
     def __init__(self, questions=[]):
         self.questions = questions if questions is not None else []
         self.user_points = 0
+        self.highscore = 0
+        self.user_scores = {}
 
     def get_all(self):
         return self.questions
@@ -32,6 +34,16 @@ class FakeQuestionRepository:
     def delete_all_points(self):
         self.user_points = 0
 
+    def get_highscore(self, username):
+        return self.highscore
+
+    def update_highscore(self, username):
+        self.highscore = self.user_points
+        return self.highscore
+
+    def get_top_highscores(self):
+        return sorted(self.user_scores.items(), key=lambda item: item[1], reverse=True)[:3]
+
 
 class TestQuestionService(unittest.TestCase):
     def setUp(self):
@@ -52,6 +64,11 @@ class TestQuestionService(unittest.TestCase):
             "Stockholm", "Helsinki", "Oslo", "Copenhagen"
         ], "Helsinki")
 
+        self.question_id = self.question_package.question_id
+        self.question = self.question_package.question
+        self.options = self.question_package.options
+        self.correct_option = self.question_package.correct_option
+
     def create_questions(self, question_id, question, options, correct_option):
         self.question_service.create_question(
             question_id, question, options, correct_option)
@@ -69,12 +86,8 @@ class TestQuestionService(unittest.TestCase):
         return self.user_service.login(username, password)
 
     def test_questions_are_shown_correctly(self):
-        question_id = self.question_package.question_id
-        question = self.question_package.question
-        options = self.question_package.options
-        correct_option = self.question_package.correct_option
-
-        self.create_questions(question_id, question, options, correct_option)
+        self.create_questions(self.question_id, self.question,
+                              self.options, self.correct_option)
         all_questions = self.get_questions()
 
         all_options = {"Stockholm", "Helsinki", "Oslo", "Copenhagen"}
@@ -87,11 +100,8 @@ class TestQuestionService(unittest.TestCase):
         self.assertEqual(all_questions[0].correct_option, "Helsinki")
 
     def test_check_correct_answer_returns_True_and_points_are_increased(self):
-        question_id = self.question_package.question_id
-        question = self.question_package.question
-        options = self.question_package.options
-        correct_option = self.question_package.correct_option
-        self.create_questions(question_id, question, options, correct_option)
+        self.create_questions(self.question_id, self.question,
+                              self.options, self.correct_option)
 
         all_questions = self.get_questions()
         quiz_question = all_questions[0]
@@ -105,11 +115,8 @@ class TestQuestionService(unittest.TestCase):
         self.assertEqual(user_points, 1)
 
     def test_check_wrong_answer_returns_False_and_points_are_not_increased(self):
-        question_id = self.question_package.question_id
-        question = self.question_package.question
-        options = self.question_package.options
-        correct_option = self.question_package.correct_option
-        self.create_questions(question_id, question, options, correct_option)
+        self.create_questions(self.question_id, self.question,
+                              self.options, self.correct_option)
 
         all_questions = self.get_questions()
         quiz_question = all_questions[0]
@@ -123,11 +130,8 @@ class TestQuestionService(unittest.TestCase):
         self.assertEqual(user_points, 0)
 
     def test_get_points_returns_correct_points_and_initialize_point_sets_points_to_zero(self):
-        question_id = self.question_package.question_id
-        question = self.question_package.question
-        options = self.question_package.options
-        correct_option = self.question_package.correct_option
-        self.create_questions(question_id, question, options, correct_option)
+        self.create_questions(self.question_id, self.question,
+                              self.options, self.correct_option)
 
         all_questions = self.get_questions()
         quiz_question = all_questions[0]
@@ -148,3 +152,80 @@ class TestQuestionService(unittest.TestCase):
         get_initialized_points = self.question_service.get_points(
             self.user_player1)
         self.assertEqual(get_initialized_points, 0)
+
+    def test_highscore_is_updated_correctly_if_user_answers_correctly_and_has_points(self):
+        self.create_questions(self.question_id, self.question,
+                              self.options, self.correct_option)
+
+        all_questions = self.get_questions()
+        quiz_question = all_questions[0]
+        user_answer = "Helsinki"
+
+        user_points = self.question_service.calculate_points(
+            self.user_player1, quiz_question, user_answer)
+
+        updated_user_highscore = self.question_service.update_highscore(
+            self.user_player1)
+
+        self.assertEqual(user_points, updated_user_highscore)
+
+    def test_highscore_is_updated_correctly_if_user_has_no_points(self):
+        self.create_questions(self.question_id, self.question,
+                              self.options, self.correct_option)
+
+        user_points = self.question_service.get_points(self.user_player1)
+        updated_user_highscore = self.question_service.update_highscore(
+            self.user_player1)
+
+        self.assertEqual(user_points, updated_user_highscore)
+
+    def test_highscore_is_displayed_correctly_for_user_when_user_has_no_points(self):
+
+        user_points = self.question_service.get_points(self.user_player1)
+        self.question_service.update_highscore(self.user_player1)
+        get_user_highscore = self.question_service.get_highscore(
+            self.user_player1)
+
+        self.assertEqual(user_points, get_user_highscore)
+
+    def test_highscore_is_displayed_correctly_for_user_when_user_has_points(self):
+        self.create_questions(self.question_id, self.question,
+                              self.options, self.correct_option)
+
+        all_questions = self.get_questions()
+        quiz_question = all_questions[0]
+        user_answer = "Helsinki"
+
+        user_points = self.question_service.calculate_points(
+            self.user_player1, quiz_question, user_answer)
+
+        user_points = self.question_service.get_points(self.user_player1)
+        self.question_service.update_highscore(self.user_player1)
+        get_user_highscore = self.question_service.get_highscore(
+            self.user_player1)
+
+        self.assertEqual(user_points, get_user_highscore)
+
+    def test_top_3_highscores_are_displayed_correctly(self):
+        users = [
+            User('player1', 'player1password'),
+            User('player2', 'player2password'),
+            User('player3', 'player3password'),
+            User('player4', 'player4password')
+        ]
+
+        user_stats = [4, 3, 2, 1]
+
+        for user, points in zip(users, user_stats):
+            self.question_service._question_repository.user_scores[user.username] = points
+            self.question_service.update_highscore(user)
+
+        expected_highscores = [
+            ('player1', 4),
+            ('player2', 3),
+            ('player3', 2)
+        ]
+
+        highscores = self.question_service.get_top_highscores()
+
+        self.assertEqual(highscores, expected_highscores)

@@ -16,6 +16,15 @@ class TestQuestionRepository(unittest.TestCase):
         self.user_player1 = User("player1", "player1password")
         self.user_player1_points = UserStats(self.user_player1.username, 0)
 
+        self.user_player2 = User("player2", "player2password")
+        self.user_player2_points = UserStats(self.user_player2.username, 0)
+
+        self.user_player3 = User("player3", "player3password")
+        self.user_player3_points = UserStats(self.user_player3.username, 0)
+
+        self.user_player4 = User("player4", "player4password")
+        self.user_player4_points = UserStats(self.user_player4.username, 0)
+
     def create_user(self, user):
         return user_repository.create_user(user)
 
@@ -65,3 +74,100 @@ class TestQuestionRepository(unittest.TestCase):
         user_points = question_repository.get_points(user.username)
 
         self.assertEqual(user_points, 0)
+
+    def test_get_highscore_for_user(self):
+        user = self.create_user(self.user_player1)
+
+        question_repository.add_points(user.username)
+        question_repository.add_points(user.username)
+        user_points = question_repository.get_points(user.username)
+
+        question_repository.update_highscore(user.username)
+        user_highscore = question_repository.get_highscore(user.username)
+
+        self.assertEqual(user_points, user_highscore)
+
+    def test_get_top_highscores_for_top_3_users(self):
+        user1 = self.create_user(self.user_player1)
+        user2 = self.create_user(self.user_player2)
+        user3 = self.create_user(self.user_player3)
+
+        question_repository.add_points(user1.username)
+        question_repository.add_points(user1.username)
+        question_repository.add_points(user1.username)
+        question_repository.add_points(user1.username)
+        question_repository.update_highscore(user1.username)
+        user1_highscore = question_repository.get_highscore(user1.username)
+
+        question_repository.add_points(user2.username)
+        question_repository.add_points(user2.username)
+        question_repository.add_points(user2.username)
+        question_repository.update_highscore(user2.username)
+        user2_highscore = question_repository.get_highscore(user2.username)
+
+        question_repository.add_points(user3.username)
+        question_repository.update_highscore(user3.username)
+        user3_highscore = question_repository.get_highscore(user3.username)
+
+        highscore_list = question_repository.get_top_highscores()
+
+        self.assertEqual(highscore_list[0][1], user1_highscore)
+        self.assertEqual(highscore_list[1][1], user2_highscore)
+        self.assertEqual(highscore_list[2][1], user3_highscore)
+
+    def test_get_top_highscores_for_top_3_users_if_less_than_3_users(self):
+        user1 = self.create_user(self.user_player1)
+        user2 = self.create_user(self.user_player2)
+
+        question_repository.add_points(user1.username)
+        question_repository.update_highscore(user1.username)
+        user1_highscore = question_repository.get_highscore(user1.username)
+
+        question_repository.add_points(user2.username)
+        question_repository.add_points(user2.username)
+        question_repository.update_highscore(user2.username)
+        user2_highscore = question_repository.get_highscore(user2.username)
+
+        highscore_list = question_repository.get_top_highscores()
+
+        self.assertEqual(highscore_list[0][1], user2_highscore)
+        self.assertEqual(highscore_list[1][1], user1_highscore)
+        self.assertEqual(len(highscore_list), 2)
+
+    def test_get_top_highscores_for_top_3_users_if_more_than_3_users(self):
+        user1 = self.create_user(self.user_player1)
+        user2 = self.create_user(self.user_player2)
+        user3 = self.create_user(self.user_player3)
+        user4 = self.create_user(self.user_player4)
+
+        question_repository.add_points(user1.username)
+        question_repository.add_points(user1.username)
+        question_repository.add_points(user1.username)
+        question_repository.add_points(user1.username)
+        question_repository.update_highscore(user1.username)
+        user1_highscore = question_repository.get_highscore(user1.username)
+
+        question_repository.add_points(user2.username)
+        question_repository.add_points(user2.username)
+        question_repository.add_points(user2.username)
+        question_repository.update_highscore(user2.username)
+        user2_highscore = question_repository.get_highscore(user2.username)
+
+        question_repository.add_points(user3.username)
+        question_repository.add_points(user3.username)
+        question_repository.update_highscore(user3.username)
+        user3_highscore = question_repository.get_highscore(user3.username)
+
+        question_repository.add_points(user4.username)
+        question_repository.update_highscore(user4.username)
+        user4_highscore = question_repository.get_highscore(user4.username)
+
+        highscore_list = question_repository.get_top_highscores()
+
+        self.assertEqual(highscore_list[0][1], user1_highscore)
+        self.assertEqual(highscore_list[1][1], user2_highscore)
+        self.assertEqual(highscore_list[2][1], user3_highscore)
+
+        top_highscores = [points[1] for points in highscore_list]
+
+        self.assertNotIn(user4_highscore, top_highscores)
