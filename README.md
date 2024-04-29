@@ -12,13 +12,16 @@ The project has been built and tested with Python-version 3.10. It is possible t
 [Link to week 5 release](https://github.com/mikaelri/ot-harjoitustyo/releases/tag/week5) 
 
 ## Documentation
-Link to the [Requirements Specification](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/requirements_specification.md)
 
-Link to the [Hour Tracker](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/hour_tracker.md)
+[User Manual](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/user_manual.md)
 
-Link to the  [Change Log](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/change_log.md)
+[Requirements Specification](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/requirements_specification.md)
 
-Link to the  [Architecture](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/architecture.md)
+[Architecture](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/architecture.md)
+
+[Change Log](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/change_log.md)
+
+[Hour Tracker](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/hour_tracker.md)
 
 ## Installation instructions
 Please note that you need to run the following commands inside the **quiz-app** folder.

@@ -13,4 +13,5 @@
 | 20.4              | 7    | Updated questions table's correct option from integer to str, added logic for checking the users answers, calculating points and fetching the points for repositories and services. Updated ui to show questions randomly for the user and overall added that user can now play the game and go through all questions |
 | 22.4              | 7    | Tested new question services and repositories functions, updated documentation and ReadMe, updated ui |
 | 26.4              | 5    | Added docstrings and added highscore related ui, database, services and repositories functionalities, also some minor ui fixes|
-| **Total hours**   | **55**
+| 29.4              | 5    | Added tests for services and repositories for highscore related features. Updater architecture docs. |
+| **Total hours**   | **60**
