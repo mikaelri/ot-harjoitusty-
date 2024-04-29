@@ -10,7 +10,7 @@ class TestQuestionRepository(unittest.TestCase):
         question_repository.delete_all()
         user_repository.delete_all()
         question_repository.delete_all_user_points()
-        
+
         self.question = Quiz(1, "What is the capital of Finland?", [
             "Stockholm", "Helsinki", "Oslo", "Copenhagen"], "Helsinki")
         self.user_player1 = User("player1", "player1password")

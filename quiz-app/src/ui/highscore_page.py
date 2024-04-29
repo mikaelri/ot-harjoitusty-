@@ -57,11 +57,13 @@ class HighscorePage:
             text="moii",
             command=self._show_highscores
         )
-        highscore_label.grid(row=2, column=0, padx=5, pady=10, sticky=constants.W)
+        highscore_label.grid(row=2, column=0, padx=5,
+                             pady=10, sticky=constants.W)
 
     def _initialize_user_page(self):
         style = ttk.Style(self._frame)
-        style.configure('userpage.TButton', foreground='white', background='grey')
+        style.configure('userpage.TButton',
+                        foreground='white', background='grey')
 
         user_page_button = ttk.Button(
             master=self._frame,
@@ -72,7 +74,6 @@ class HighscorePage:
         )
         user_page_button.grid(row=0, column=1, padx=5,
                               pady=10, sticky=constants.NE)
-
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)

@@ -70,7 +70,7 @@ class UI:
             self._show_user_page,
         )
         self._current_page.pack()
-    
+
     def _show_highscore_page(self):
         self._hide_current_page()
 
@@ -79,4 +79,3 @@ class UI:
             self._show_user_page,
         )
         self._current_page.pack()
-
