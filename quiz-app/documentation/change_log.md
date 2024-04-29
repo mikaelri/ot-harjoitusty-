@@ -17,7 +17,7 @@
 - User can see the questions one by one in random order and answer these, correct answer will increase the quiz points by +1 and incorrect does not increase, this is saved to the database.
 - User can see the total points of the quiz once all of the questions are answered
   
-## Week5
+## Week6
 - User can see the current highscore before starting the quiz, which is replaced by quiz points if those will be higher.
 - User can see highscores of the top 3 users in the same computer
 - Added highscore column to the database and added and tested the related logic to question services and database changes to question repositories.
