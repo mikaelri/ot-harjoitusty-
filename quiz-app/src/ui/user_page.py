@@ -6,7 +6,7 @@ from services.question_service import question_service
 class UserPage:
     """Class, which is used for user operations and starting a new quiz."""
 
-    def __init__(self, root, handle_start_quiz, handle_logout):
+    def __init__(self, root, handle_start_quiz, handle_logout, handle_highscore):
         """Constructor for UserPage class, handles starting a new quiz and logout.
 
         Args:
@@ -21,6 +21,7 @@ class UserPage:
         self._root = root
         self._handle_start_quiz = handle_start_quiz
         self._handle_logout = handle_logout
+        self._handle_highscore = handle_highscore
         self._frame = None
         self._user = user_service.get_current_user()
         self._questions = question_service.show_questions()
@@ -82,6 +83,19 @@ class UserPage:
                         foreground='white', background='green', width=30)
         start_quiz_button.grid(row=2, padx=5, pady=10)
 
+    def _initialize_highscore(self):
+        highscore_button = ttk.Button(
+            master=self._frame,
+            style='highscore.TButton',
+            text='Show top 3 highscores',
+            command=self._handle_highscore
+        )
+
+        style = ttk.Style(self._frame)
+        style.configure('highscore.TButton',
+                        foreground='white', background='grey', width=30)
+        highscore_button.grid(row=3, padx=5, pady=10)
+
     def _initialize_logout(self):
         style = ttk.Style(self._frame)
         style.configure('logout.TButton', foreground='white', background='red')
@@ -99,5 +113,6 @@ class UserPage:
         self._initialize_header()
         self._initialize_info()
         self._initialize_new_quiz()
+        self._initialize_highscore()
         self._initialize_logout()
         self._frame.grid_columnconfigure(0, weight=1)

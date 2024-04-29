@@ -2,6 +2,7 @@ from ui.login_page import LoginPage
 from ui.create_user_page import CreateUserPage
 from ui.user_page import UserPage
 from ui.quiz_page import QuizPage
+from ui.highscore_page import HighscorePage
 
 
 class UI:
@@ -57,6 +58,7 @@ class UI:
             self._root,
             self._show_start_quiz_page,
             self._show_login_page,
+            self._show_highscore_page,
         )
         self._current_page.pack()
 
@@ -68,3 +70,13 @@ class UI:
             self._show_user_page,
         )
         self._current_page.pack()
+    
+    def _show_highscore_page(self):
+        self._hide_current_page()
+
+        self._current_page = HighscorePage(
+            self._root,
+            self._show_user_page,
+        )
+        self._current_page.pack()
+
