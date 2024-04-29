@@ -155,5 +155,19 @@ class QuestionRepository:
                        (username,))
         self._connection.commit()
 
+    def get_top_highscores(self) -> list:
+        """Get the top 3 highscores from the database for the users.
+
+        Returns:
+            A list of tuples for users, for the top 3 (or less) users with most quiz points
+        """
+
+        cursor = self._connection.cursor()
+        cursor.execute(
+            "SELECT username, highscore FROM user_stats ORDER BY highscore DESC LIMIT 3")
+        rows = cursor.fetchall()
+
+        return rows
+
 
 question_repository = QuestionRepository(get_database_connection())

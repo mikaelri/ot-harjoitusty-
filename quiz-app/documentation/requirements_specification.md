@@ -31,7 +31,7 @@ Admin user could add new questions to the quiz or handle user management.
   * User can select an option and submit it ✅
   * Application tells if the users answer was correct or wrong ❌
   * Application keeps score of the users points and at the end shows the total score ✅
-* User can see highscores of the same users in same computer ❌
+* User can see highscores of the same users in same computer ✅
 * User can logout ✅ 
 
 ## Further development

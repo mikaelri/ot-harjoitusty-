@@ -152,5 +152,14 @@ class QuestionService:
 
         return self._question_repository.get_highscore(user.username)
 
+    def get_top_highscores(self) -> list:
+        """Get the top 3 highscores for the users.
+
+        Returns:
+            A list of tuples for users, for the top 3 (or less) users with most quiz points
+        """
+
+        return self._question_repository.get_top_highscores()
+
 
 question_service = QuestionService()

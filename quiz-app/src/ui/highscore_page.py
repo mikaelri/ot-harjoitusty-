@@ -20,6 +20,7 @@ class HighscorePage:
         self._handle_user_page = handle_user_page
         self._frame = None
         self._user = user_service.get_current_user()
+        self._questions = question_service.show_questions()
 
         self._initialize()
 
@@ -33,32 +34,40 @@ class HighscorePage:
 
         self._frame.destroy()
 
-    def _initialize_header(self):
-        user_label = ttk.Label(
-            master=self._frame,
-            text=f'Logged in as {self._user.username}')
-        user_label.grid(row=0, column=0, padx=5, pady=10, sticky=constants.N)
-
     def _initialize_info(self):
-        info_text = "Below you can see top 3 highscores for users in this computer:"
+        info_text = "Below you can see highscores of the users in this computer."
 
         quiz_info = ttk.Label(
             master=self._frame,
             text=info_text
         )
-        quiz_info.grid(row=1, column=0, padx=5, pady=10, sticky=constants.N)
-
-    def _show_highscores(self):
-        pass
+        quiz_info.grid(row=0, column=0, padx=5, pady=10, sticky=constants.W)
 
     def _initialize_highscore(self):
-        highscore_label = ttk.Label(
-            master=self._frame,
-            text="moii",
-            command=self._show_highscores
-        )
-        highscore_label.grid(row=2, column=0, padx=5,
-                             pady=10, sticky=constants.W)
+        highscores = question_service.get_top_highscores()
+
+        starting_row = 2
+
+        if not highscores:
+            highscore_label = ttk.Label(
+                master=self._frame,
+                text="No highscores available"
+            )
+            highscore_label.grid(row=starting_row, column=0, padx=5,
+                                 pady=10, sticky=constants.W)
+
+        else:
+            ttk.Label(
+                master=self._frame,
+                text=f"Top 3 highscores out of total {len(self._questions)} points:"
+            ).grid(row=starting_row, column=0, padx=5,
+                   pady=10, sticky=constants.W)
+
+            for idx, (username, points) in enumerate(highscores, start=1):
+                ttk.Label(
+                    master=self._frame,
+                    text=f'{idx}. {username}: {points}'
+                ).grid(row=starting_row + idx, column=0, padx=5, pady=10, sticky=constants.W)
 
     def _initialize_user_page(self):
         style = ttk.Style(self._frame)
@@ -77,7 +86,6 @@ class HighscorePage:
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
-        self._initialize_header()
         self._initialize_info()
         self._initialize_highscore()
         self._initialize_user_page()

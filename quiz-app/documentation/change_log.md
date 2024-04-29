@@ -20,3 +20,4 @@
 ## Week5
 - User can see the current highscore before starting the quiz, which is replaced by quiz points if those will be higher.
 - Added highscore column to the database and added the related logic to question services and database changes to question repositories.
+- User can see highscores of the top 3 users in the same computer
