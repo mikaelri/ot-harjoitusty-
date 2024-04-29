@@ -1,10 +1,10 @@
 # Project architecture
 ## High-level structure
 The application has three layers, which are ui, services and repositories.<br>
-* Ui takes care of the user interface actions
-* Services handles the application logic
-* Repositories handles the database operations
-* In addition, entities are used as data models in services and repositories
+* Ui takes care of the *user interface actions*
+* Services handles the *application logic*
+* Repositories handles the *database operations*
+* In addition, entities are used as *data models* in services and repositories
 
 Below is the packaging class structure of the project.
 
@@ -27,9 +27,9 @@ When the user has created a new user account and logged in it is possible to sta
 When the user starts the quiz, the [QuizPage](../src/ui/quiz_page.py) ui class is taking care that the questions are rendered to the user playing the quiz correctly, with help of the application logic from services layer.
 
 ## Application logic and detailed structure
-Entities classes [User and UserStats](../src/entities/user.py) and [Quiz](../src/entities/user.py) are the data models for the application. <br>
+Entities classes [User and UserStats](../src/entities/user.py) and [Quiz](../src/entities/quiz.py) are the data models for the application. <br>
 User and UserStats are linked to each other in the database with 'username'.<br>
-Quiz is used to create the quiz questions and perform application logic.<br>
+Quiz is used to create the quiz questions and to perform application logic.<br>
 Entities class User can have multiple questions as well as the Question class can have multiple users.<br>
 
 Application logic is handled with [QuestionServices](../src/services/question_service.py) and [UserServices](../src/services/user_service.py), which has e.g. the following methods:
@@ -159,7 +159,7 @@ QuestionService ->> QuestionRepository: update_highscore(username)
 ```
 
 ### Highscores
-In the user page, the user can click "show top 3 highscores", to see the best three users and their points.
+In the user page, the user can click "*show top 3 highscores*", to see the best three users and their points.
 
 The ui calls the `get_top_highscores()` from the application logic, which fetches the details by calling the repositories layer. 
 
@@ -178,3 +178,8 @@ QuestionService ->> QuestionRepository: get_top_highscores()
 QuestionRepository -->> QuestionService: highscores
 QuestionService -->> ui: highscores
 ```
+
+### Possible other features
+All of the project features follows the similar approach as described above.
+
+The user interface calls the application logic in services, which then calls the repositories layer to get or update also the details in the database.
