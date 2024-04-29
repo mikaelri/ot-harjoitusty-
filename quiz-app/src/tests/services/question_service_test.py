@@ -229,3 +229,26 @@ class TestQuestionService(unittest.TestCase):
         highscores = self.question_service.get_top_highscores()
 
         self.assertEqual(highscores, expected_highscores)
+        self.assertEqual(len(highscores), 3)
+
+    def test_top_3_highscores_are_displayed_correctly_if_less_than_3_users(self):
+        users = [
+            User('player1', 'player1password'),
+            User('player2', 'player2password')
+        ]
+
+        user_stats = [4, 3]
+
+        for user, points in zip(users, user_stats):
+            self.question_service._question_repository.user_scores[user.username] = points
+            self.question_service.update_highscore(user)
+
+        expected_highscores = [
+            ('player1', 4),
+            ('player2', 3)
+        ]
+
+        highscores = self.question_service.get_top_highscores()
+
+        self.assertEqual(highscores, expected_highscores)
+        self.assertEqual(len(highscores), 2)
