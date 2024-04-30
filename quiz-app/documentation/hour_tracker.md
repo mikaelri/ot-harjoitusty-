@@ -14,4 +14,5 @@
 | 22.4              | 7    | Tested new question services and repositories functions, updated documentation and ReadMe, updated ui |
 | 26.4              | 5    | Added docstrings and added highscore related ui, database, services and repositories functionalities, also some minor ui fixes|
 | 29.4              | 5    | Added tests for services and repositories for highscore related features. Updater architecture docs. |
-| **Total hours**   | **60**
+| 30.4              | 2    | Add user manual, other small fixes |
+| **Total hours**   | **62**
