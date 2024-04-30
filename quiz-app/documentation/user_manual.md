@@ -2,7 +2,8 @@
 The latest project release can be downloaded from the releases.
 
 ## Configuration
-You can rename the file used for data storage, by default it is named as below. Renaming can be done in the .*env* file. Files are created automatically inside the data folder if it does not contain already the files.
+You can rename the file used for data storage, by default it is named as below. Renaming can be done in the .*env* file. <br>
+Files are created automatically inside the data folder if it does not contain already those.
 
 
 ```
@@ -22,7 +23,7 @@ poetry install
 poetry run invoke create
 ```
 
-3. Start the application with command
+3. You can now start the application with command
 ```
 poetry run invoke start
 ```
@@ -65,4 +66,5 @@ User can end the quiz by clicking the top right corner, the points gathered will
 
 ![](./pictures/highscore_page.png)
 
-Highscores are gathered from the users of the same computer and are shown in ranking orderd based on the quiz points. From the highscore page the user can return to the user page by clicking the top right corner.
+Highscores are gathered from the users of the same computer and are shown in ranking orderd based on the quiz points.<br> 
+From the highscore page the user can return to the user page by clicking the top right corner button.
