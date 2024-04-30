@@ -32,7 +32,10 @@ Please note that you need to run the following commands inside the **quiz-app** 
 ```
 poetry install
 ```
-
+or use the following if you get [Errno 2]:
+```
+poetry install --no-root
+```
 2. Create the database and initialize the questions for the quiz with command
 ```
 poetry run invoke create
