@@ -66,7 +66,7 @@ class HighscorePage:
             for idx, (username, points) in enumerate(highscores, start=1):
                 ttk.Label(
                     master=self._frame,
-                    text=f'{idx}. {username}: {points}'
+                    text=f'{idx}. {username}: {points} points'
                 ).grid(row=starting_row + idx, column=0, padx=5, pady=10, sticky=constants.W)
 
     def _initialize_user_page(self):
