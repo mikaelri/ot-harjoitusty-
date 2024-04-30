@@ -9,7 +9,7 @@ The project has been built and tested with Python-version 3.10. It is possible t
 
 
 ## Releases
-[Week 5 release](https://github.com/mikaelri/ot-harjoitustyo/releases/tag/week5) 
+[Week 5 release](https://github.com/mikaelri/ot-harjoitustyo/releases/tag/week5) <br>
 [Week 6 release](https://github.com/mikaelri/ot-harjoitustyo/releases/tag/week6)
 
 ## Documentation
