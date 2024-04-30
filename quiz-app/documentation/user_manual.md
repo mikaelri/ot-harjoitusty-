@@ -34,13 +34,13 @@ Application will start to the login view:
 
 User can login by typing an existing username and password and clicking "Login" button.
 ## Creating a new user
-A new user can be created by clicking "Go to Create a new user page" in the login view and you will see:
+A new user can be created by clicking "Go to Create a new user page" in the login view after user will see:
 
 ![](./pictures/create_user.png)
 
 User can create a new user account if the username does not exists already. <br>
-Username must be at least 3 and password 6 characters.
-
+Username must be at least 3 and password 6 characters long.<br>
+After selecting the username and password user can press "Create a new user".<br>
 If the new user was created succesfully, it will be navigated directly to the user page.
 
 ## User page, playing the quiz and viewing the highscores
