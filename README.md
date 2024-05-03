@@ -13,6 +13,8 @@ The project has been built and tested with Python-version 3.10. It is possible t
 
 [Week 6 release](https://github.com/mikaelri/ot-harjoitustyo/releases/tag/week6)
 
+[Final release](https://github.com/mikaelri/ot-harjoitustyo/releases/tag/final-release)
+
 ## Documentation
 
 [Requirements Specification](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/requirements_specification.md)
