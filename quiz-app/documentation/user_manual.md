@@ -11,19 +11,19 @@ DATABASE_FILENAME=quizapp.sqlite
 ```
 
 ## Starting the application
-Before starting the application do the following:
+Before starting the application do the following inside the **quiz-app** folder:
 
-1. Install the dependencies and requirements with command
+1. Install the dependencies and requirements with command:
 ```
 poetry install
 ```
 
-2. Create the database and initialize the questions for the quiz with command
+2. Create the database and initialize the questions for the quiz with command:
 ```
 poetry run invoke create
 ```
 
-3. You can now start the application with command
+3. You can now start the application with command:
 ```
 poetry run invoke start
 ```
