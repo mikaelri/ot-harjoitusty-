@@ -17,6 +17,10 @@ Before starting the application do the following inside the **quiz-app** folder:
 ```
 poetry install
 ```
+or use the following if you encounter error [Errno 2]:
+```
+poetry install --no-root
+```
 
 2. Create the database and initialize the questions for the quiz with command:
 ```
