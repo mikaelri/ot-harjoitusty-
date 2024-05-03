@@ -1,5 +1,6 @@
 # Testing document
-The application has been tested with automatic unit and integration tests with unittest and manually within the system level. In addition, it was tested that the application and database generates the quiz questions succesfully.
+The application has been tested with automatic unit and integration tests with unittest and manually within the system level.<br> 
+In addition, it was tested that the application and database generates the quiz questions succesfully.
 
 ## Unit and integration tests
 
@@ -9,7 +10,7 @@ These both have been tested with different test cases with unittest Python frame
 
 Test files can be accessed here: [TestQuestionService](../src/tests/services/question_service_test.py) and [TestUserService](../src/tests/services/user_service_test.py).
 
-Unittesting was conducted for both by injecting repository objects and this was done to store the test data to central memory and not to the database. The repository objects were ```FakeQuestionRepository``` and ```FakeUserRepository```, which models the repository operations.
+Unittesting was conducted for both by injecting repository objects and this was done to store the test data to the memory and not to the database. The repository objects were ```FakeQuestionRepository``` and ```FakeUserRepository```, which models the repository operations.
 
 ### Database operations and handling - repositories layer
 [UserRepository](../src/repositories/user_repository.py) and [QuestionRepositoriy](../src/repositories/question_repository.py) classes handle the database operations within SQLite. <br>
@@ -19,10 +20,10 @@ Test files can be accessed here: [TestQuestionRepository](../src/tests/repositor
 
 Repository tests used a test database to store the data and the configuration can be found from the .env.test file.
 
-In addition, some tests was performed to ensure the questions are initialized correctly by mocking the function, these tests can be accessed here: [TestInitializeQuestions](../src/tests/databases/initialize_questions_test.py).
+In addition, tests were performed to ensure the questions are initialized correctly by mocking the function, these tests can be accessed here: [TestInitializeQuestions](../src/tests/databases/initialize_questions_test.py).
 
 ### Testing coverage
-Total branch testing coverage is **97%** and this does not include user interface testing this was outscoped from this project.
+Total branch testing coverage is **97%** and this does not include user interface testing as it was outscoped from this project.
 
 ![Coverage report](./pictures/coverage_report.png)
 
@@ -33,10 +34,12 @@ No testing was performed for *build.py* and *initialize_database.py* files, howe
 System testing was performed manually.
 
 ### Installation and configuration
-The application has been tested by following the [User manual](../documentation/user_manual.md) for both Linux and macOS environment. Configuration for .env variable was tested with different names as well.
+The application has been tested by following the [User manual](../documentation/user_manual.md) for both Linux and macOS environment.<br>
+Configuration for .env variable was tested with different names as well.
 
 ### Features
 All of the features in the [Requirements specification](../documentation/requirements_specification.md) have been checked and it has been tried to add invalid entries to the application's input fields, such as empty values.
 
 ## Known quality issues
-The application does not automatically create the databases for users or questions, thus, these needs to be initialized manually. The instructions and commands for the initialization is part of the user manual.
+The application does not automatically create the databases for users or questions, thus, these needs to be initialized manually.<br> 
+The instructions and commands for the initialization is part of the user manual.
