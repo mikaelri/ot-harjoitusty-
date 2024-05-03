@@ -52,7 +52,7 @@ class UserPage:
         info_text = f'''
         You will be shown {len(self._questions)} questions with four possible answer options each.
 
-                        Your task is to try to select the correct answer.
+                        Your task is to try to select the correct answers.
                         
                                 Your current highscore is: {
                                 question_service.get_highscore(self._user)}/{

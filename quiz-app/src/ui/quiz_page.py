@@ -7,7 +7,7 @@ class QuizPage:
     """Class, which is used for quiz operations."""
 
     def __init__(self, root, handle_user_page):
-        """Constructor for UserPage class, handles starting a new quiz and logout.
+        """Constructor for QuizPage class, handles starting a new quiz and logout.
 
         Args:
             root: 
@@ -92,7 +92,7 @@ class QuizPage:
             question_service.update_highscore(self._user)
             ttk.Label(
                 master=self._frame,
-                text=f"""Quiz ended. You scored {total_points}/{len(self._questions)} points."""
+                text=f"Quiz ended. You scored {total_points}/{len(self._questions)} points."
             ).grid(row=self._current_question_index + 2, column=0, padx=5, pady=10,
                    sticky=constants.W)
             self._quiz_ended = True

@@ -4,7 +4,7 @@ from services.question_service import question_service
 
 
 class HighscorePage:
-    """Class, which is used for showing highscores"""
+    """Class, which is used for showing highscores."""
 
     def __init__(self, root, handle_user_page):
         """Constructor for HighscorePage class, handles showing the highscores.
