@@ -1,3 +1,4 @@
+import re
 from entities.user import User
 
 from repositories.user_repository import (
@@ -107,18 +108,21 @@ class UserService:
                 Error if the password and password2 does not match
         """
 
+        username_check = r"^\S{3,}$"
+        password_check = r"^\S{6,}$"
+
         current_user = self._user_repository.get_by_username(username)
 
         if current_user:
             raise UsernameExistsError
 
-        if not username.strip() or len(username.strip()) < 3:
+        if not re.match(username_check, username):
             raise InvalidCredentialsError
 
-        if not password.strip() or len(password.strip()) < 6:
+        if not re.match(password_check, password):
             raise PasswordTooShortError
 
-        if password.strip() != password2.strip():
+        if password != password2:
             raise PasswordError
 
         user = self._user_repository.create_user(User(username, password))
