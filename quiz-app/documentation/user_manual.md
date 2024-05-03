@@ -1,5 +1,5 @@
 # User manual
-The latest project release can be downloaded from the releases.
+The latest project release can be downloaded from [Final release](https://github.com/mikaelri/ot-harjoitustyo/releases/tag/final-release).
 
 ## Configuration
 You can rename the file used for data storage, by default it is named as below. Renaming can be done in the .*env* file. <br>
