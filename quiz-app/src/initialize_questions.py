@@ -20,38 +20,33 @@ def initialize_questions(connection=None, question_repository=None) -> object:
     if question_repository is None:
         question_repository = QuestionRepository(connection)
 
-    try:
-        cursor = connection.cursor()
-        cursor.execute("DELETE FROM questions")
-        connection.commit()
+    cursor = connection.cursor()
+    cursor.execute("DELETE FROM questions")
+    connection.commit()
 
-        questions = [
-            Quiz(None, "What is the largest planet in the Solar system?",
-                 ["Mars", "Pluto", "Jupiter", "Venus"], "Jupiter"),
+    questions = [
+        Quiz(None, "What is the largest planet in the Solar system?",
+                ["Mars", "Pluto", "Jupiter", "Venus"], "Jupiter"),
 
-            Quiz(None, "What is the capital of Australia?", [
-                "Perth", "Sidney", "Canberra", "Melbourne"], "Canberra"),
+        Quiz(None, "What is the capital of Australia?", [
+            "Perth", "Sidney", "Canberra", "Melbourne"], "Canberra"),
 
-            Quiz(None, "Who won the icehockey World cup in 1995?", [
-                "USA", "Sweden", "Finland", "Canada"], "Finland"),
+        Quiz(None, "Who won the icehockey World cup in 1995?", [
+            "USA", "Sweden", "Finland", "Canada"], "Finland"),
 
-            Quiz(None, "In what year Finland participated in the football European cup?", [
-                "1992", "2002", "2022", "2021"], "2021"),
+        Quiz(None, "In what year Finland participated in the football European cup?", [
+            "1992", "2002", "2022", "2021"], "2021"),
 
-            Quiz(None, "In what year Finland won the Eurovision song contest?", [
-                "1996", "1998", "2012", "2006"], "2006"),
+        Quiz(None, "In what year Finland won the Eurovision song contest?", [
+            "1996", "1998", "2012", "2006"], "2006"),
 
-            Quiz(None, "What is the largest lake in Finland?", [
-                "Päijänne", "Saimaa", "Oulujärvi", "Inarijärvi"], "Saimaa"),
-        ]
+        Quiz(None, "What is the largest lake in Finland?", [
+            "Päijänne", "Saimaa", "Oulujärvi", "Inarijärvi"], "Saimaa"),
+    ]
 
-        for quiz in questions:
-            question_repository.create_question(quiz)
-        print('Questions initialized for the quiz, you can start playing!')
-
-    except DatabaseError as error:
-        print(f'Error: {error}')
-        connection.rollback()
+    for quiz in questions:
+        question_repository.create_question(quiz)
+    print('Questions initialized for the quiz, you can start playing!')
 
 
 if __name__ == "__main__":
