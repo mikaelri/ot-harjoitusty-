@@ -2,7 +2,7 @@
 This repository is for **Univeristy of Helsinki** course *Ohjelmistotekniikka* and its project work and exercises.
 
 ## Quiz Application
-The project is a **quiz application**, where users are presented with various questions from different topics such as geography, cities, general knowledge, sports, and others. Each question has four answer options and one correct answer.
+The project is a **quiz application** where users are presented with various questions from different topics such as geography, cities, general knowledge, sports or others. Each question has four answer options and one correct answer.
 
 ## Python version
 The project has been built and tested with Python-version 3.10. It is possible that with older versions there might occur problmes.
@@ -30,20 +30,20 @@ The project has been built and tested with Python-version 3.10. It is possible t
 ## Installation instructions
 Please note that you need to run the following commands inside the **quiz-app** folder.
 
-1. Install the dependencies and requirements with command
+1. Install the dependencies and requirements with command:
 ```
 poetry install
 ```
-or use the following if you get [Errno 2]:
+or use the following if you encounter error [Errno 2]:
 ```
 poetry install --no-root
 ```
-2. Create the database and initialize the questions for the quiz with command
+2. Create the database and initialize the questions for the quiz with command:
 ```
 poetry run invoke create
 ```
 
-3. Start the application with command
+3. Start the application with command:
 ```
 poetry run invoke start
 ```
@@ -60,17 +60,17 @@ poetry run invoke start
 
 
 ### Testing
-Activate the virtual environment inside the *quiz-app folder* before running the tests with command
+Activate the virtual environment inside the **quiz-app folder** before running the tests with command:
 ```
 poetry shell
 ```
-Run the tests with command
+Run the tests with command:
 ```
 poetry run invoke test
 ```
 
 ### Testing coverage
-Run the tests when virtual environment is on and get coverage report with command
+Run the tests when virtual environment is on and get coverage report with command:
 ```
 poetry run invoke coverage-report
 ```
