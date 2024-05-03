@@ -10,4 +10,4 @@ report.html
 #Database files
 quiz-app/data
 data/quiz-app.sqlite
-data/test-quiz-app.sqlite
+data/test-quizapp.sqlite
