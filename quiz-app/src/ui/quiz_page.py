@@ -37,6 +37,7 @@ class QuizPage:
 
         self._frame.destroy()
 
+    # Generated code starts
     def _show_quiz_questions(self):
         if self._current_question:
             self._current_question.grid_forget()
@@ -83,6 +84,7 @@ class QuizPage:
                 self._show_quiz_questions()
             else:
                 self._end_quiz()
+    # Generated code ends
 
     def _end_quiz(self):
         if not self._quiz_ended:
