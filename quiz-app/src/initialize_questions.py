@@ -1,4 +1,3 @@
-from sqlite3 import DatabaseError
 from database_connection import get_database_connection
 from repositories.question_repository import QuestionRepository
 from entities.quiz import Quiz
