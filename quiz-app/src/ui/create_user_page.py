@@ -57,11 +57,13 @@ class CreateUserPage:
             self._show_error(
                 f"Username {username} already exists, choose a new one")
         except InvalidCredentialsError:
-            self._show_error("Username must be at least 3 characters")
+            self._show_error(
+                "Username must be at least 3 characters without whitespaces")
         except PasswordError:
             self._show_error("Passwords must be the same")
         except PasswordTooShortError:
-            self._show_error("Password must be at least 6 characters")
+            self._show_error(
+                "Password must be at least 6 characters without whitespaces")
 
     def _show_error(self, message):
         self._error_variable.set(message)

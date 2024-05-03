@@ -112,13 +112,13 @@ class UserService:
         if current_user:
             raise UsernameExistsError
 
-        if len(username) < 3 or len(username) == 0:
+        if not username.strip() or len(username.strip()) < 3:
             raise InvalidCredentialsError
 
-        if len(password) < 6 or len(password) == 0:
+        if not password.strip() or len(password.strip()) < 6:
             raise PasswordTooShortError
 
-        if password != password2:
+        if password.strip() != password2.strip():
             raise PasswordError
 
         user = self._user_repository.create_user(User(username, password))
