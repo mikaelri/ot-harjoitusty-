@@ -34,7 +34,7 @@ No testing was performed for *build.py* and *initialize_database.py* files, howe
 System testing was performed manually.
 
 ### Installation and configuration
-The application has been tested by following the [User manual](../documentation/user_manual.md) for both Linux and macOS environment.<br>
+The application has been tested by following the [User manual](../documentation/user_manual.md) for *Linux* environment.<br>
 Configuration for .env variable was tested with different names as well.
 
 ### Features
