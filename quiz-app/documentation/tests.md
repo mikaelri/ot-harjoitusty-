@@ -10,7 +10,7 @@ These both have been tested with different test cases with unittest Python frame
 
 Test files can be accessed here: [TestQuestionService](../src/tests/services/question_service_test.py) and [TestUserService](../src/tests/services/user_service_test.py).
 
-Unittesting was conducted for both by injecting repository objects and this was done to store the test data to the memory and not to the database. The repository objects were ```FakeQuestionRepository``` and ```FakeUserRepository```, which models the repository operations.
+Unittesting was conducted for both by injecting repository objects and this was done to store the test data to the memory and not to the database. The repository objects were ```FakeQuestionRepository``` and ```FakeUserRepository```, which models the repository operations in the database.
 
 ### Database operations and handling - repositories layer
 [UserRepository](../src/repositories/user_repository.py) and [QuestionRepositoriy](../src/repositories/question_repository.py) classes handle the database operations within SQLite. <br>
@@ -18,7 +18,7 @@ These classes were also tested with unit testing.
 
 Test files can be accessed here: [TestQuestionRepository](../src/tests/repositories/question_repository_test.py) and [TestUserRepository](../src/tests/repositories/user_repository_test.py).
 
-Repository tests used a test database to store the data and the configuration can be found from the .env.test file.
+Repository tests used a test database to store the data and the file name was configured in the .env.test file.
 
 In addition, tests were performed to ensure the questions are initialized correctly by mocking the function, these tests can be accessed here: [TestInitializeQuestions](../src/tests/databases/initialize_questions_test.py).
 

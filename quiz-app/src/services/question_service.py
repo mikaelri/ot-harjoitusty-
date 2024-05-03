@@ -22,7 +22,7 @@ class QuestionService:
         self._question_repository = question_repository
 
     def show_questions(self) -> list:
-        """Shows a list of questions in random order
+        """Shows a list of questions in random order.
 
         Returns:
             A list of quiz questions in random order.
@@ -59,7 +59,7 @@ class QuestionService:
         return self._question_repository.create_question(new_question)
 
     def check_answer(self, quiz: Quiz, user_answer: str) -> bool:
-        """Checks if the user's selected option was correct answer
+        """Checks if the user's selected option was correct answer.
 
         Args:
             quiz: 
@@ -156,7 +156,7 @@ class QuestionService:
         """Get the top 3 highscores for the users.
 
         Returns:
-            A list of tuples for users, for the top 3 (or less) users with most quiz points
+            A list of tuples for users, for the top 3 (or less) users with most quiz points.
         """
 
         return self._question_repository.get_top_highscores()

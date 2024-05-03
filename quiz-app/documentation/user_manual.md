@@ -66,5 +66,5 @@ User can end the quiz by clicking the top right corner, the points gathered will
 
 ![](./pictures/highscore_page.png)
 
-Highscores are gathered from the users of the same computer and are shown in ranking orderd based on the quiz points.<br> 
+Highscores are gathered from the users of the same computer and are shown in ranking order based on the quiz points.<br> 
 From the highscore page the user can return to the user page by clicking the top right corner button.
