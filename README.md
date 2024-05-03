@@ -15,11 +15,13 @@ The project has been built and tested with Python-version 3.10. It is possible t
 
 ## Documentation
 
-[User Manual](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/user_manual.md)
-
 [Requirements Specification](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/requirements_specification.md)
 
 [Architecture](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/architecture.md)
+
+[User Manual](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/user_manual.md)
+
+[Tests](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/tests.md)
 
 [Change Log](https://github.com/mikaelri/ot-harjoitustyo/blob/main/quiz-app/documentation/change_log.md)
 

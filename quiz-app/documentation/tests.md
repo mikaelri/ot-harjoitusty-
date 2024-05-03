@@ -25,6 +25,7 @@ In addition, some tests was performed to ensure the questions are initialized co
 Total branch testing coverage is **97%** and this does not include user interface testing this was outscoped from this project.
 
 ![Coverage report](./pictures/coverage_report.png)
+
 No testing was performed for *build.py* and *initialize_database.py* files, however these could have been left out from the testing coverage or tested from the command line. *initialize_questions.py* was also not tested from the command line. In addition it was not tested that the .env file is not existing, this decreases the coverage in *config.py* file.
 
 
