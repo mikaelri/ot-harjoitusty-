@@ -64,7 +64,7 @@ User page has three features:
 
 Quiz view has fixed amount of questions for the user to answer.<br>
 Once the user has answered all of the questions, the application will show the total score.<br>
-User can end the quiz by clicking the top right corner, the points gathered will be saved.
+User can end the quiz by clicking the top right corner.
 
 3. User can view the highscores by clicking "Show top 3 highscores", which will display:
 
